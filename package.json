@@ -1,0 +1,29 @@
+{
+  "name": "fp",
+  "version": "1.0.0",
+  "description": "## What is CodeIgniter?",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rizka-syaukany/fp-pwl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rizka-syaukany/fp-pwl/issues"
+  },
+  "homepage": "https://github.com/Rizka-syaukany/fp-pwl#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "laravel-mix": "^6.0.37",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19"
+  }
+}
