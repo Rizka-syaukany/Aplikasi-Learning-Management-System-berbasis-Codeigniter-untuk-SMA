@@ -1,11 +1,8 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/template1'); ?>
 
 <?= $this->section('content'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>halaman login</h1>
-        </div>
-    </div>
+<div class=" bg-black-100">
+    <h1>saya adalah seorang pengrajin handal</h1>
+
 </div>
 <?= $this->endSection(); ?>
