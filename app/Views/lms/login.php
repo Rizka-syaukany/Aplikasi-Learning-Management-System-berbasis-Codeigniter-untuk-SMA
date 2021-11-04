@@ -1,4 +1,4 @@
-<?= $this->extend('layout/template1'); ?>
+<?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class=" bg-black-100">

@@ -11,7 +11,7 @@
 
 <body>
     <div>
-        <?= $this->include('layout/sidenavbar'); ?>
+        <?= $this->include('layout/navbar'); ?>
     </div>
     <?= $this->renderSection('content'); ?>
 </body>
