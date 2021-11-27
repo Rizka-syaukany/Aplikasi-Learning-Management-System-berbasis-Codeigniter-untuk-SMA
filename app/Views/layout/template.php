@@ -14,10 +14,17 @@
     <title><?= $title; ?></title>
 </head>
 
-<body>
-    <?= $this->include('layout/navbar'); ?>
+<body class="bg-gradient-to-r from-green-400 to-blue-500 ...">
+    <table>
+        <tr>
 
-    <?= $this->renderSection('content'); ?>
+            <?= $this->include("layout/navbar"); ?>
+        </tr>
+        <tr>
+            <?= $this->renderSection('content'); ?>
+
+        </tr>
+    </table>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
