@@ -18,7 +18,7 @@
     <table>
         <tr>
 
-            <?= $this->include("layout/navbar"); ?>
+
         </tr>
         <tr>
             <?= $this->renderSection('content'); ?>
