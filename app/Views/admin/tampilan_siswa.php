@@ -3,7 +3,9 @@
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
+
     <h1 class="text-center">halaman tampilan siswa</h1>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>
