@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
-    <h1 class="text-center">Halaman Utama Admin</h1>
+    <h1 class="text-center">Halaman Utama Master</h1>
     <table class="table">
         <thead class="thead-dark">
             <tr>
