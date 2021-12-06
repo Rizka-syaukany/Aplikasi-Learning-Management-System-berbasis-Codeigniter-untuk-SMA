@@ -52,14 +52,13 @@ class Admin extends BaseController
         ];
         return view('admin/tampilan',$data);
     }
-    public function tampilan_siswa(){
-        $siswa = $this->userModel->where('level',2)->findAll();
+    public function tampilan_siswa($id_kelas){
+        //  $siswa = $this->siswaModel->get_siswa($nama_kelas);
         $data = [
             'title' => 'Tampilan Siswa',
-            'siswa' => $siswa
+            'siswa' => $this->siswaModel->get_siswa($id_kelas)
         ];
-
-        dd($siswa);
+        dd($data);
         return view('admin/tampilan_siswa',$data);
     }
     public function tampilan_guru(){
@@ -71,7 +70,8 @@ class Admin extends BaseController
     public function tampilan_kelas(){
         $data = [
             'title' => 'Tampilan kelas',
-            'siswa' => $this->siswaModel->get_siswa()
+            'kelas' => $this->siswaModel->get_kelas()
+            
         ];
         return view('admin/tampilan_kelas',$data);
     }

@@ -4,14 +4,13 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Daftar Kelas</h1>
-    <div class="card w-25">
-        <div class="card-body">
-            <?php foreach ($siswa as $s => $value) : ?>
-            <h5 class="card-title"><?= $value['nama_kelas']; ?></h5>
-            <a href="#" class="btn btn-primary">Button</a>
-            <?php dd($siswa); ?>
-            <?php endforeach; ?>
+    <?php foreach ($kelas as $k) : ?>
+    <div class="card w-25 mt-10">
+        <div class="card-body ">
+            <h5 class="card-title"><?= $k['nama_kelas']; ?></h5>
+            <a href="tampilan_siswa/<?= $k['id_kelas']; ?>" class="btn btn-primary">Tampilkan</a>
         </div>
     </div>
+    <?php endforeach; ?>
 </div>
 <?= $this->endSection(); ?>
