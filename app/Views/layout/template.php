@@ -15,16 +15,15 @@
 </head>
 
 <body class="bg-gradient-to-r from-green-400 to-blue-500 ...">
-    <table>
+    <!-- <table>
         <tr>
-
-
         </tr>
         <tr>
-            <?= $this->renderSection('content'); ?>
-
-        </tr>
-    </table>
+            </tr>
+        </table> -->
+    <div>
+        <?= $this->renderSection('content'); ?>
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

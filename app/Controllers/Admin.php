@@ -2,8 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+use App\Models\SiswaModel;
+
 class Admin extends BaseController
 {
+    protected $userModel;
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+        $this->siswaModel = new SiswaModel();
+    }
     public function index()
     {
         $data = [
@@ -44,9 +53,13 @@ class Admin extends BaseController
         return view('admin/tampilan',$data);
     }
     public function tampilan_siswa(){
+        $siswa = $this->userModel->where('level',2)->findAll();
         $data = [
-            'title' => 'Tampilan Siswa'
+            'title' => 'Tampilan Siswa',
+            'siswa' => $siswa
         ];
+
+        dd($siswa);
         return view('admin/tampilan_siswa',$data);
     }
     public function tampilan_guru(){
@@ -57,7 +70,8 @@ class Admin extends BaseController
     }
     public function tampilan_kelas(){
         $data = [
-            'title' => 'Tampilan kelas'
+            'title' => 'Tampilan kelas',
+            'siswa' => $this->siswaModel->get_siswa()
         ];
         return view('admin/tampilan_kelas',$data);
     }
