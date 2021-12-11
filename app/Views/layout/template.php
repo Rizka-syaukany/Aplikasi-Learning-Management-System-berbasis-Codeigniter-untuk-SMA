@@ -21,7 +21,7 @@
         <tr>
             </tr>
         </table> -->
-    <div>
+    <div class="container">
         <?= $this->renderSection('content'); ?>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

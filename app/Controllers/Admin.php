@@ -58,8 +58,9 @@ class Admin extends BaseController
             'title' => 'Tampilan Siswa',
             'siswa' => $this->siswaModel->get_siswa($id_kelas)
         ];
-        dd($data);
+        // dd($data);
         return view('admin/tampilan_siswa',$data);
+        // echo $id_kelas;
     }
     public function tampilan_guru(){
         $data = [
@@ -74,5 +75,14 @@ class Admin extends BaseController
             
         ];
         return view('admin/tampilan_kelas',$data);
+    }
+    public function detail_siswa($id_user){
+        $data = [
+            'title' => 'Tampilan kelas',
+            'detail' => $this->siswaModel->detailSiswa($id_user)
+            
+        ];
+        // dd($data);
+        return view('admin/detail',$data);
     }
 }

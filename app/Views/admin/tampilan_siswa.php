@@ -8,9 +8,11 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Nomer Induk</th>
+                <th scope="col">Jenis Kelamin</th>
+                <th scope="col">Kelas</th>
+                <th scope="col">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +21,9 @@
                 <th scope="row"><?= $i++; ?></th>
                 <td><?= $s['nama_user']; ?></td>
                 <td><?= $s['NIP']; ?></td>
+                <td><?= $s['jenis_kelamin']; ?></td>
                 <td><?= $s['nama_kelas']; ?></td>
+                <td><a class="btn btn-success" href="../detail_siswa/<?= $s['id_user']; ?>" role="button">Link</a></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
