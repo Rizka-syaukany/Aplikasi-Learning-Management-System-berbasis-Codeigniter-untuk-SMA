@@ -22,7 +22,7 @@
         <tr>
             </tr>
         </table> -->
-    <div class="container">
+    <div>
         <?= $this->renderSection('content'); ?>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

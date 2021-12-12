@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
+use App\Models\GuruModel;
 use App\Models\UserModel;
 use App\Models\SiswaModel;
 
@@ -12,6 +14,8 @@ class Admin extends BaseController
     {
         $this->userModel = new UserModel();
         $this->siswaModel = new SiswaModel();
+        $this->guruModel = new GuruModel();
+        $this->adminModel = new AdminModel();
     }
     public function index()
     {
@@ -64,8 +68,10 @@ class Admin extends BaseController
     }
     public function tampilan_guru(){
         $data = [
-            'title' => 'Tampilan Guru'
+            'title' => 'Tampilan Guru',
+            'guru' => $this->guruModel->get_guru()
         ];
+        // dd($data);
         return view('admin/tampilan_guru',$data);
     }
     public function tampilan_kelas(){
@@ -78,11 +84,35 @@ class Admin extends BaseController
     }
     public function detail_siswa($id_user){
         $data = [
-            'title' => 'Tampilan kelas',
+            'title' => 'Detail Siswa',
             'detail' => $this->siswaModel->detailSiswa($id_user)
             
         ];
         // dd($data);
-        return view('admin/detail',$data);
+        return view('admin/detail_siswa',$data);
+    }
+    public function detail_guru($id_user){
+        $data = [
+            'title' => 'Detail Guru',
+            'detail'=> $this->guruModel->detail_guru($id_user)
+        ];
+        // dd($data);
+        return view('admin/detail_guru',$data);
+    }
+    public function tampil_admin(){
+        $data = [
+            'title' => 'Detail Admin',
+            'admin'=> $this->adminModel->get_admin()
+        ];
+        // dd($data);
+        return view('admin/tampilan_admin',$data);
+    }
+    public function detail_admin($id_user){
+        $data = [
+            'title'=> 'Detail Admmin',
+            'detail'=> $this->adminModel->get_admin($id_user)
+        ];
+        // dd($data);
+        return view('admin/detail_admin',$data);
     }
 }
