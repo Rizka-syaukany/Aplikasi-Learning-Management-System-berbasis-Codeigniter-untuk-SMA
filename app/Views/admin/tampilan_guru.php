@@ -4,6 +4,7 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Halaman tampilan guru</h1>
+    <a href="/admin/add_guru" class="btn btn-success">Tambah Guru</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -23,8 +24,7 @@
                 <td><?= $g['NIP']; ?></td>
                 <td><?= $g['alamat_user']; ?></td>
                 <td><?= $g['jenis_kelamin']; ?></td>
-                <td><a class="btn btn-success" href="../admin/detail_guru/<?= $g['id_user']; ?>"
-                        role="button">Detail</a>
+                <td><a class="btn btn-success" href="/admin/detail_guru/<?= $g['id_user']; ?>" role="button">Detail</a>
                 </td>
             </tr>
             <?php endforeach; ?>

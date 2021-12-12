@@ -57,12 +57,10 @@ class Admin extends BaseController
         return view('admin/tampilan',$data);
     }
     public function tampilan_siswa($id_kelas){
-        //  $siswa = $this->siswaModel->get_siswa($nama_kelas);
         $data = [
             'title' => 'Tampilan Siswa',
             'siswa' => $this->siswaModel->get_siswa($id_kelas)
         ];
-        // dd($data);
         return view('admin/tampilan_siswa',$data);
         // echo $id_kelas;
     }
@@ -114,5 +112,11 @@ class Admin extends BaseController
         ];
         // dd($data);
         return view('admin/detail_admin',$data);
+    }
+    public function add_guru(){
+        $data = [
+            'title'=> 'Tambah guru'
+        ];
+        return view('admin/add_guru',$data);
     }
 }
