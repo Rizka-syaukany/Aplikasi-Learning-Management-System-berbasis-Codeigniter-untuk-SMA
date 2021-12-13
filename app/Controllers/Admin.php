@@ -12,7 +12,7 @@ class Admin extends BaseController
     protected $userModel;
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        // $this->userModel = new UserModel();
         $this->siswaModel = new SiswaModel();
         $this->guruModel = new GuruModel();
         $this->adminModel = new AdminModel();
