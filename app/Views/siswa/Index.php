@@ -1,5 +1,4 @@
 <?= $this->extend('layout/template'); ?>
-
 <?= $this->section('content'); ?>
-<h2>Guru</h2>
+<h3>siswa</h3>
 <?= $this->endsection(); ?>

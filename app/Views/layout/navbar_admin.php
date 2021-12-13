@@ -1,7 +1,4 @@
-<!-- <tr>
-    </tr> -->
 <div>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">LMS SMA</a>
@@ -14,7 +11,10 @@
                     <a class="nav-link active" href="/admin/index">Home</a>
                     <a class="nav-link" href="/admin/update">Update</a>
                     <a class="nav-link" href="/admin/tampilan">Tampil</a>
+
                 </div>
             </div>
         </div>
     </nav>
+</div>
+
