@@ -11,4 +11,10 @@
                     <a class="nav-link active" href="/admin/index">Home</a>
                     <a class="nav-link" href="/admin/update">Update</a>
                     <a class="nav-link" href="/admin/tampilan">Tampil</a>
+
                 </div>
+            </div>
+        </div>
+    </nav>
+</div>
+

@@ -9,7 +9,7 @@
         <div class="card-body">
             <h5 class="card-title">Tampilkan table siswa</h5>
             <p class="card-text">tempat untuk menampilkan table siswa</p>
-            <a href="/admin/tampilan_siswa" class="btn btn-primary">Tampilkan</a>
+            <a href="/admin/tampilan_kelas" class="btn btn-primary">Tampilkan</a>
         </div>
     </div>
     <div class="card w-75 my-2">
@@ -21,9 +21,9 @@
     </div>
     <div class="card w-75 my-2">
         <div class="card-body">
-            <h5 class="card-title">Tampilkan table kelas</h5>
+            <h5 class="card-title">Tampilkan table admin</h5>
             <p class="card-text">tempat untuk menampilkan table kelas</p>
-            <a href="/admin/tampilan_kelas" class="btn btn-primary">Tampilkan</a>
+            <a href="/admin/tampil_admin" class="btn btn-primary">Tampilkan</a>
         </div>
     </div>
 </div>

@@ -4,34 +4,30 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Halaman tampilan guru</h1>
+    <a href="/admin/add_guru" class="btn btn-success">Tambah Guru</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Nomer Induk</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Jenis Kelamin</th>
+                <th scope="col">Aksi</th>
             </tr>
         </thead>
         <tbody>
+            <?php $i=1; foreach ($guru as $g) : ?>
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row"><?= $i++; ?></th>
+                <td><?= $g['nama_user']; ?></td>
+                <td><?= $g['NIP']; ?></td>
+                <td><?= $g['alamat_user']; ?></td>
+                <td><?= $g['jenis_kelamin']; ?></td>
+                <td><a class="btn btn-success" href="/admin/detail_guru/<?= $g['id_user']; ?>" role="button">Detail</a>
+                </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

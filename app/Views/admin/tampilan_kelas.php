@@ -3,36 +3,14 @@
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
-    <h1 class="text-center">Halaman Utama Admin</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1 class="text-center">Daftar Kelas</h1>
+    <?php foreach ($kelas as $k) : ?>
+    <div class="card w-25 mt-10">
+        <div class="card-body ">
+            <h5 class="card-title"><?= $k['nama_kelas']; ?></h5>
+            <a href="tampilan_siswa/<?= $k['id_kelas']; ?>" class="btn btn-primary">Tampilkan</a>
+        </div>
+    </div>
+    <?php endforeach; ?>
 </div>
 <?= $this->endSection(); ?>
