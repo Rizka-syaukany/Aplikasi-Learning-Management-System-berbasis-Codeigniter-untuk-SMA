@@ -115,18 +115,49 @@ class Admin extends BaseController
         return view('admin/detail_admin',$data);
     }
     public function add_guru(){
+   
         $data = [
-            'title'=> 'Tambah guru'
+            'title'=> 'Tambah guru',
+            'validation'=> \Config\Services::validation()
         ];
         return view('admin/add_guru',$data);
     }
     public function save(){
         //validasi
-        if($this->validate([
-            'judul'=>'required',
-            'nip'=>'rewuired|is_unique[user.NIP]'
+        if(!$this->validate([
+            'nama_user'=>[
+                'rules'=> 'required',
+                'errors'=>[
+                    'required' =>'Nama harus diisi !'
+                ]
+            ],
+            'nip'=>[
+                'rules'=>'required|is_unique[user.NIP]',
+                'errors'=>[
+                    'required'=>'Nomer Induk harus diisi !',
+                    'is_unique'=>'Nomer Induk telah tersedia'
+                ]
+                ],
+            'telp_user'=>[
+                'rules'=>'is_unique[user.telp_user]',
+                'errors'=>[
+                    'is_unique'=>'Nomer Telpon telah tersedia'
+                ]
+                ]
+                // 'profile_user'=>[
+                //     'rules'=>'uploaded[profile_user]|max_size[profile_user,2048]|is_image[profile_user]|mime_in[profile_user,image/jpg, image/jpeg, image/png',
+                //     'errors'=>[
+                //         'uploaded'=>'File belum di upload',
+                //         'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                //         'is_image'=>'File yang anda Upload bukan gambar',
+                //         'mime_in'=>'File yang anda Upload bukan gambar'
+                //     ]
+                //     ]
         ])){
-            return redirect()->to('admin/tampilan_guru');
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
+            return redirect()->to('admin/add_guru')->withInput();
         }
 
 
@@ -142,7 +173,7 @@ class Admin extends BaseController
             'profile_user' => $this->request->getVar('profile_user'),
             'level' => 0
         ]);
-        // dd($this->request->getVar());
+       dd($this->request->getVar());
         session()->setFlashdata('pesan','Behasil menambahkan data guru.');
         return redirect()->to('/admin/tampilan_guru');
     }
