@@ -4,7 +4,12 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Halaman tampilan guru</h1>
-    <a href="/admin/add_guru" class="btn btn-success">Tambah Guru</a>
+    <?php if(session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+    <?php endif; ?>
+    <a href="/admin/add_guru" class="btn btn-success my-2">Tambah Guru</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>

@@ -6,13 +6,14 @@ use App\Models\AdminModel;
 use App\Models\GuruModel;
 use App\Models\UserModel;
 use App\Models\SiswaModel;
+use App\Models\User;
 
 class Admin extends BaseController
 {
     protected $userModel;
     public function __construct()
     {
-        // $this->userModel = new UserModel();
+        $this->userModel = new User();
         $this->siswaModel = new SiswaModel();
         $this->guruModel = new GuruModel();
         $this->adminModel = new AdminModel();
@@ -118,5 +119,31 @@ class Admin extends BaseController
             'title'=> 'Tambah guru'
         ];
         return view('admin/add_guru',$data);
+    }
+    public function save(){
+        //validasi
+        if($this->validate([
+            'judul'=>'required',
+            'nip'=>'rewuired|is_unique[user.NIP]'
+        ])){
+            return redirect()->to('admin/tampilan_guru');
+        }
+
+
+        //memasukan data ke database
+        $this->userModel->save([
+            'nama_user' => $this->request->getVar('nama_user'),
+            'NIP' => $this->request->getVar('nip'),
+            'alamat_user' => $this->request->getVar('alamat'),
+            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'email_user' => $this->request->getVar('email_user'),
+            'password' => $this->request->getVar('password'),
+            'telp_user' => $this->request->getVar('telp_user'),
+            'profile_user' => $this->request->getVar('profile_user'),
+            'level' => 0
+        ]);
+        // dd($this->request->getVar());
+        session()->setFlashdata('pesan','Behasil menambahkan data guru.');
+        return redirect()->to('/admin/tampilan_guru');
     }
 }

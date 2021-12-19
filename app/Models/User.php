@@ -13,6 +13,11 @@ class USER extends Model
         'nama_user',
         'email_user',
         'password',
-        'level'
+        'level',
+        'NIP',
+        'jenis_kelamin',
+        'telp_user',
+        'profile_user',
+        'alamat_user'
     ];
 }
