@@ -76,7 +76,7 @@
                 <div class="form-group row">
                     <label for="profile_user" class="col-sm-2 col-form-label">profile</label>
                     <div class="col-sm-10">
-                        <label for="profile_user">upload fiel</label>
+                        <label for="profile_user">upload file</label>
                         <input type="file" class="form-control-file" id="profile_user" name="profile_user">
                     </div>
                 </div>

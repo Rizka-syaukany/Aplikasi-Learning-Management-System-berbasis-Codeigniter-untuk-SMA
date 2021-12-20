@@ -170,10 +170,10 @@ class Admin extends BaseController
             'email_user' => $this->request->getVar('email_user'),
             'password' => $this->request->getVar('password'),
             'telp_user' => $this->request->getVar('telp_user'),
-            'profile_user' => $this->request->getVar('profile_user'),
+            'profile_user' => $this->request->getFile('profile_user'),
             'level' => 0
         ]);
-       dd($this->request->getVar());
+       dd($this->request->getFiles());
         session()->setFlashdata('pesan','Behasil menambahkan data guru.');
         return redirect()->to('/admin/tampilan_guru');
     }
