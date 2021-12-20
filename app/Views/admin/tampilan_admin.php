@@ -4,6 +4,13 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Halaman tampilan admin</h1>
+    <?php if(session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+    <?php endif; ?>
+    <a href="/admin/add_admin" class="btn btn-success my-2">Tambah Admin</a>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>

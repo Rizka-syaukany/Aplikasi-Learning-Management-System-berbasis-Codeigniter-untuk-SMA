@@ -122,6 +122,16 @@ class Admin extends BaseController
         ];
         return view('admin/add_guru',$data);
     }
+    public function add_admin(){
+   
+        $data = [
+            'title'=> 'Tambah Admin',
+            'validationAdmin'=> \Config\Services::validation()
+        ];
+        // dd($data);
+        return view('admin/add_admin',$data);
+    }
+    
     public function save(){
         //validasi
         if(!$this->validate([
@@ -143,23 +153,29 @@ class Admin extends BaseController
                 'errors'=>[
                     'is_unique'=>'Nomer Telpon telah tersedia'
                 ]
-                ]
-                // 'profile_user'=>[
-                //     'rules'=>'uploaded[profile_user]|max_size[profile_user,2048]|is_image[profile_user]|mime_in[profile_user,image/jpg, image/jpeg, image/png',
-                //     'errors'=>[
-                //         'uploaded'=>'File belum di upload',
-                //         'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                //         'is_image'=>'File yang anda Upload bukan gambar',
-                //         'mime_in'=>'File yang anda Upload bukan gambar'
-                //     ]
-                //     ]
+                ],
+                'profile_user'=>[
+                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|uploaded[profile_user]|max_size[profile_user,2048]',
+                    'errors'=>[
+                        'uploaded'=>'File belum di upload',
+                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                        'is_image'=>'File yang anda Upload bukan gambar',
+                        'mime_in'=>'File yang anda Upload bukan gambar'
+                    ]
+                    ]
         ])){
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
             return redirect()->to('admin/add_guru')->withInput();
         }
-
+        //ambil gambar
+        $profile = $this->request->getFile('profile_user');
+        // dd($profile);
+        //pindah file ke img
+        $profile->move('img');
+        //ambil nama file
+        $namaProfile =$profile->getName();
 
         //memasukan data ke database
         $this->userModel->save([
@@ -170,11 +186,70 @@ class Admin extends BaseController
             'email_user' => $this->request->getVar('email_user'),
             'password' => $this->request->getVar('password'),
             'telp_user' => $this->request->getVar('telp_user'),
-            'profile_user' => $this->request->getFile('profile_user'),
+            'profile_user' => $namaProfile,
             'level' => 0
         ]);
-       dd($this->request->getFiles());
         session()->setFlashdata('pesan','Behasil menambahkan data guru.');
         return redirect()->to('/admin/tampilan_guru');
+    }
+    public function saveAdmin(){
+        //validasi
+        if(!$this->validate([
+            'nama_user'=>[
+                'rules'=> 'required',
+                'errors'=>[
+                    'required' =>'Nama harus diisi !'
+                ]
+            ],
+            'nip'=>[
+                'rules'=>'required|is_unique[user.NIP]',
+                'errors'=>[
+                    'required'=>'Nomer Induk harus diisi !',
+                    'is_unique'=>'Nomer Induk telah tersedia'
+                ]
+                ],
+            'telp_user'=>[
+                'rules'=>'is_unique[user.telp_user]',
+                'errors'=>[
+                    'is_unique'=>'Nomer Telpon telah tersedia'
+                ]
+                ],
+                'profile_user'=>[
+                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|uploaded[profile_user]|max_size[profile_user,2048]',
+                    'errors'=>[
+                        'uploaded'=>'File belum di upload',
+                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                        'is_image'=>'File yang anda Upload bukan gambar',
+                        'mime_in'=>'File yang anda Upload bukan gambar'
+                    ]
+                    ]
+        ])){
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
+            return redirect()->to('admin/add_admin')->withInput();
+        }
+        //ambil gambar
+        $profile = $this->request->getFile('profile_user');
+        // dd($profile);
+        //pindah file ke img
+        $profile->move('img');
+        //ambil nama file
+        $namaProfile =$profile->getName();
+
+        //memasukan data ke database
+        $this->userModel->save([
+            'nama_user' => $this->request->getVar('nama_user'),
+            'NIP' => $this->request->getVar('nip'),
+            'alamat_user' => $this->request->getVar('alamat'),
+            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'email_user' => $this->request->getVar('email_user'),
+            'password' => $this->request->getVar('password'),
+            'telp_user' => $this->request->getVar('telp_user'),
+            'profile_user' => $namaProfile,
+            'level' => 1
+        ]);
+        session()->setFlashdata('pesan','Behasil menambahkan data Admin.');
+        return redirect()->to('/admin/tampilan_admin');
     }
 }

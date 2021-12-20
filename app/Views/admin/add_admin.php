@@ -1,21 +1,20 @@
 <?= $this->extend('layout/template'); ?>
-
 <?= $this->section('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2 class="my-4">Form Tambah Guru</h2>
-            <?= $validation->listErrors(); ?>
-            <form action="/admin/save" method="POST" enctype="multipart/form-data">
+            <h2 class="my-4">Form Tambah Admin</h2>
+            <?= $validationAdmin->listErrors(); ?>
+            <form action="/admin/saveAdmin" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="nama_user" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text"
-                            class="form-control  <?= ($validation->hasError('nama_user')) ? 'is-invalid':''; ?>"
+                            class="form-control  <?= ($validationAdmin->hasError('nama_user')) ? 'is-invalid':''; ?>"
                             name="nama_user" id="nama_user" autofocus value="<?= old('nama_user'); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('nama_user'); ?>
+                            <?= $validationAdmin->getError('nama_user'); ?>
                         </div>
                     </div>
 
@@ -24,10 +23,10 @@
                     <label for="nip" class="col-sm-2 col-form-label">Nomer induk</label>
                     <div class="col-sm-10">
                         <input type="number"
-                            class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid':''; ?>" name="nip"
-                            id="nip" value="<?= old('nip'); ?>">
+                            class="form-control <?= ($validationAdmin->hasError('nip')) ? 'is-invalid':''; ?>"
+                            name="nip" id="nip" value="<?= old('nip'); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('nip'); ?>
+                            <?= $validationAdmin->getError('nip'); ?>
                         </div>
                     </div>
                 </div>
@@ -66,10 +65,10 @@
                     <label for="telp_user" class="col-sm-2 col-form-label">no telp</label>
                     <div class="col-sm-10">
                         <input type="number"
-                            class="form-control <?= ($validation->hasError('telp_user')) ? 'is-invalid':''; ?>"
+                            class="form-control <?= ($validationAdmin->hasError('telp_user')) ? 'is-invalid':''; ?>"
                             name="telp_user" id="telp_user" value="<?= old('telp_user'); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('telp_user'); ?>
+                            <?= $validationAdmin->getError('telp_user'); ?>
                         </div>
                     </div>
                 </div>
@@ -78,10 +77,10 @@
                     <div class="col-sm-10 ">
                         <div class="custom-file">
                             <input type="file"
-                                class="custom-file-input <?= $validation->hasError('profile_user') ?'is-invalid':''; ?>"
+                                class="custom-file-input <?= $validationAdmin->hasError('profile_user') ?'is-invalid':''; ?>"
                                 id="profile_user" name="profile_user">
                             <div class="invalid-feedback">
-                                <?= $validation->getError('profile_user'); ?>
+                                <?= $validationAdmin->getError('profile_user'); ?>
                             </div>
                             <label class="custom-file-label" for="profile_user">Choose file</label>
                         </div>
@@ -92,11 +91,12 @@
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Tambah data</button>
-                        <a href="/admin/tampilan_guru" class="btn btn-danger my-2">Batal</a>
+                        <a href="/admin/tampil_admin" class="btn btn-danger my-2">Batal</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>
