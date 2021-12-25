@@ -140,6 +140,10 @@ class Admin extends BaseController
         // dd($data);
         return view('admin/add_siswa',$data);
     }
+    public function delete($id_user){
+        $this->userModel->delete($id_user);
+        return redirect()->to('/admin/tampil_admin');
+    }
     
     public function save(){
         //validasi
@@ -259,7 +263,7 @@ class Admin extends BaseController
             'level' => 1
         ]);
         session()->setFlashdata('pesan','Behasil menambahkan data Admin.');
-        return redirect()->to('/admin/tampilan_admin');
+        return redirect()->to('/admin/tampil_admin');
     }
     public function saveSiswa(){
         //validasi
@@ -319,6 +323,6 @@ class Admin extends BaseController
             'level' => 1
         ]);
         session()->setFlashdata('pesan','Behasil menambahkan data Admin.');
-        return redirect()->to('/admin/tampilan_admin');
+        return redirect()->to('/admin/tampilan_siswa');
     }
 }

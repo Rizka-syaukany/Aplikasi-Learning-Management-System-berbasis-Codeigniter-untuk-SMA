@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'lms::index');
 
+$routes->delete('/admin/(:num)', 'Admin::delete/$1');
 $routes->post('/auth', 'Home::auth');
 $routes->get('/admin', 'Admin::index');
 

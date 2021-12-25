@@ -32,6 +32,11 @@
                 <td><?= $a['jenis_kelamin']; ?></td>
                 <td><a class="btn btn-success" href="../admin/detail_admin/<?= $a['id_user']; ?>"
                         role="button">Detail</a>
+                    <form action="/admin/<?= $a['id_user']; ?> " method="POST" class="d-inline">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
             <?php endforeach; ?>
