@@ -6,17 +6,26 @@ use App\Models\AdminModel;
 use App\Models\GuruModel;
 use App\Models\UserModel;
 use App\Models\SiswaModel;
+use App\Models\KelasModel;
+use App\Models\DaftarModel;
 use App\Models\User;
 
 class Admin extends BaseController
 {
     protected $userModel;
+    protected $kelasModel;
+    protected $siswaModel;
+    protected $guruModel;
+    protected $adminModel;
+    protected $daftarModel;
     public function __construct()
     {
         $this->userModel = new User();
         $this->siswaModel = new SiswaModel();
         $this->guruModel = new GuruModel();
         $this->adminModel = new AdminModel();
+        $this->kelasModel = new KelasModel();
+        $this->daftarModel = new DaftarModel();
     }
     public function index()
     {
@@ -62,6 +71,7 @@ class Admin extends BaseController
             'title' => 'Tampilan Siswa',
             'siswa' => $this->siswaModel->get_siswa($id_kelas)
         ];
+        dd($data);
         return view('admin/tampilan_siswa',$data);
         // echo $id_kelas;
     }
@@ -98,7 +108,7 @@ class Admin extends BaseController
         // dd($data);
         return view('admin/detail_guru',$data);
     }
-    public function tampil_admin(){
+    public function  admin(){
         $data = [
             'title' => 'Detail Admin',
             'admin'=> $this->adminModel->get_admin()
@@ -135,9 +145,10 @@ class Admin extends BaseController
    
         $data = [
             'title'=> 'Tambah siswa',
+            'kelas'=> $this->kelasModel->kelas(),
             'validationSiswa'=> \Config\Services::validation()
         ];
-        // dd($data);
+        //  dd($data);
         return view('admin/add_siswa',$data);
     }
     public function delete($id_user){
@@ -311,7 +322,7 @@ class Admin extends BaseController
         $namaProfile =$profile->getName();
 
         //memasukan data ke database
-        $this->userModel->save([
+        $this->userModel->insert([
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
@@ -322,6 +333,14 @@ class Admin extends BaseController
             'profile_user' => $namaProfile,
             'level' => 1
         ]);
+        $userId = $this->userModel->insertID();
+        $daftar=[
+            'id_kelas'=>$this->request->getVar('kelas'),
+            // 'id_user'=>$userId
+        ];
+        $this->daftarModel->insert($daftar);
+        
+        dd($this->daftarModel);
         session()->setFlashdata('pesan','Behasil menambahkan data Admin.');
         return redirect()->to('/admin/tampilan_siswa');
     }

@@ -74,6 +74,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="kelas" id="kelas" value="<?= old('kelas'); ?>">
+                            <?php foreach($kelas as $k): ?>
+                            <option value="<?php $k['id_kelas'] ?>"><?= $k['nama_kelas'];  ?> </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <!-- <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin"> -->
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="profile_user" class="col-sm-2 col-form-label">profile</label>
                     <div class="col-sm-10 ">
                         <div class="custom-file">
