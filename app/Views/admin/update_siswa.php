@@ -26,7 +26,7 @@
                     <div class="col-sm-10">
                         <input type="number"
                             class="form-control <?= ($validationSiswa->hasError('nip')) ? 'is-invalid':''; ?>"
-                            name="nip" id="nip" value="<?= old('nip'); ?>">
+                            name="nip" id="nip" value="<?= $siswa->NIP; ?>">
                         <div class="invalid-feedback">
                             <?= $validationSiswa->getError('nip'); ?>
                         </div>
@@ -35,14 +35,14 @@
                 <div class="form-group row">
                     <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="alamat" id="alamat" value="<?= old('alamat'); ?>">
+                        <input type="text" class="form-control" name="alamat" id="alamat"
+                            value="<?= $siswa->alamat_user; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="jenis_kelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin"
-                            value="<?= old('jenis_kelamin'); ?>">
+                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" value="">
                             <option>Laki-laki</option>
                             <option>Perempuan</option>
                         </select>
@@ -53,14 +53,13 @@
                     <label for="email_user" class="col-sm-2 col-form-label">email</label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" name="email_user" id="email_user"
-                            value="<?= old('email_user'); ?>">
+                            value="<?= $siswa->email_user; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" id="password"
-                            value="<?= old('password'); ?>">
+                        <input type="password" class="form-control" name="password" id="password" value="">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -68,7 +67,7 @@
                     <div class="col-sm-10">
                         <input type="number"
                             class="form-control <?= ($validationSiswa->hasError('telp_user')) ? 'is-invalid':''; ?>"
-                            name="telp_user" id="telp_user" value="<?= old('telp_user'); ?>">
+                            name="telp_user" id="telp_user" value="<?= $siswa->email_user; ?>">
                         <div class="invalid-feedback">
                             <?= $validationSiswa->getError('telp_user'); ?>
                         </div>
