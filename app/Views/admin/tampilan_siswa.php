@@ -32,6 +32,7 @@
                         <button type="submit" class="btn btn-danger"
                             onclick="return confirm('apakah anda yakin untuk menghapus <?= $s['nama_user']; ?>')">Delete</button>
                     </form>
+                    <a href="/admin/updateSiswa/<?= $s['id_user'];  ?>" class="btn btn-warning">Edit</a>
                 </td>
             </tr>
             <?php endforeach; ?>

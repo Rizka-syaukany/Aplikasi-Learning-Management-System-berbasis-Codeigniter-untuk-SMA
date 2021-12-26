@@ -152,15 +152,28 @@ class Admin extends BaseController
         //  dd($data);
         return view('admin/add_siswa',$data);
     }
+    public function updateSiswa($id_siswa){
+        $data = [
+            'title'=> 'Form Ubah Siswa',
+            'kelas'=> $this->kelasModel->kelas($id_siswa),
+            'siswa'=> $this->userModel->siswa($id_siswa),
+            'validationSiswa'=> \Config\Services::validation()
+        ];
+        //  dd($data);
+        return view('admin/update_siswa',$data);
+
+    }
     public function delete($id_user){
         $this->userModel->delete($id_user);
+        session()->setFlashdata('pesan','Behasil menghapus data.');
         return redirect()->to('/admin/tampil_admin');
     }
     public function delete_daftar($id_user){
         $this->userModel->delete($id_user);
         $this->daftarModel->delete($id_user);
+        session()->setFlashdata('pesan','Behasil menghapus data siswa');
         // return redirect()->to('/admin/tampilan/siswa');
-        return redirect()->to('/admin/tampilan_siswa',$id_user);
+        return redirect()->to('/admin/tampilan_kelas');
     }
     
     public function save(){
