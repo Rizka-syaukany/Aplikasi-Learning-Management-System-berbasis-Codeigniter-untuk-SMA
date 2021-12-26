@@ -9,6 +9,7 @@ use App\Models\SiswaModel;
 use App\Models\KelasModel;
 use App\Models\DaftarModel;
 use App\Models\User;
+use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 
 class Admin extends BaseController
 {
@@ -71,7 +72,7 @@ class Admin extends BaseController
             'title' => 'Tampilan Siswa',
             'siswa' => $this->siswaModel->get_siswa($id_kelas)
         ];
-        dd($data);
+        // dd($data);
         return view('admin/tampilan_siswa',$data);
         // echo $id_kelas;
     }
@@ -154,6 +155,12 @@ class Admin extends BaseController
     public function delete($id_user){
         $this->userModel->delete($id_user);
         return redirect()->to('/admin/tampil_admin');
+    }
+    public function delete_daftar($id_user){
+        $this->userModel->delete($id_user);
+        $this->daftarModel->delete($id_user);
+        // return redirect()->to('/admin/tampilan/siswa');
+        return redirect()->to('/admin/tampilan_siswa',$id_user);
     }
     
     public function save(){
@@ -298,15 +305,16 @@ class Admin extends BaseController
                     'is_unique'=>'Nomer Telpon telah tersedia'
                 ]
                 ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|uploaded[profile_user]|max_size[profile_user,2048]',
-                    'errors'=>[
-                        'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
+        //         'profile_user'=>[
+        //             'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|uploaded[profile_user]|max_size[profile_user,2048]',
+        //             'errors'=>[
+        //                 'uploaded'=>'File belum di upload',
+        //                 'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+        //                 'is_image'=>'File yang anda Upload bukan gambar',
+        //                 'mime_in'=>'File yang anda Upload bukan gambar'
+        //             ]
+        //             ]
+      
         ])){
             // $validation = \Config\Services::validation();
             // dd($validation);
@@ -322,6 +330,7 @@ class Admin extends BaseController
         $namaProfile =$profile->getName();
 
         //memasukan data ke database
+        // dd($this->request->getVar('kelas'));
         $this->userModel->insert([
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
@@ -331,17 +340,18 @@ class Admin extends BaseController
             'password' => $this->request->getVar('password'),
             'telp_user' => $this->request->getVar('telp_user'),
             'profile_user' => $namaProfile,
-            'level' => 1
+            'level' => 2
         ]);
         $userId = $this->userModel->insertID();
         $daftar=[
-            'id_kelas'=>$this->request->getVar('kelas'),
-            // 'id_user'=>$userId
+            'id_kelas'=>$this->request->getGetPost('kelas'),
+            'id_user'=>$userId
         ];
         $this->daftarModel->insert($daftar);
         
-        dd($this->daftarModel);
+        // dd($this->daftarModel);
         session()->setFlashdata('pesan','Behasil menambahkan data Admin.');
-        return redirect()->to('/admin/tampilan_siswa');
+        
+        return redirect()->to('admin/tampilan_kelas');
     }
 }

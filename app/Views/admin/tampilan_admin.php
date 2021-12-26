@@ -35,7 +35,8 @@
                     <form action="/admin/<?= $a['id_user']; ?> " method="POST" class="d-inline">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('apakah anda yakin untuk menghapus <?= $a['nama_user']; ?>')">Delete</button>
                     </form>
                 </td>
             </tr>

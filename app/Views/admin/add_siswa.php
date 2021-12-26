@@ -76,9 +76,12 @@
                 <div class="form-group row">
                     <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
                     <div class="col-sm-10">
+
                         <select class="form-control" name="kelas" id="kelas" value="<?= old('kelas'); ?>">
+                            <option value="" hidden></option>
+                            <label for="kelas">Pilih Kelas</label>
                             <?php foreach($kelas as $k): ?>
-                            <option value="<?php $k['id_kelas'] ?>"><?= $k['nama_kelas'];  ?> </option>
+                            <option value="<?= $k['id_kelas']; ?>"><?= $k['nama_kelas'];  ?></option>
                             <?php endforeach; ?>
                         </select>
                         <!-- <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin"> -->
@@ -103,7 +106,7 @@
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Tambah data</button>
-                        <a href="/admin/tampilan_guru" class="btn btn-danger my-2">Batal</a>
+                        <a href="/admin/tampilan_kelas" class="btn btn-danger my-2">Batal</a>
                     </div>
                 </div>
             </form>

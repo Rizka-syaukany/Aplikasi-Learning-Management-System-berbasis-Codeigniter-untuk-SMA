@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class DaftarModel extends Model
 {
-    protected $table = 'kelas';
-    protected $primaryKey = 'id_kelas';
+    protected $table = 'daftar_siswa';
+    protected $primaryKey = 'id_daftar_siswa';
     protected $returnType = 'object';
     protected $allowedFields = [
         'id_kelas',
