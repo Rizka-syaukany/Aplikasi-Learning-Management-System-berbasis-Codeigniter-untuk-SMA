@@ -6,15 +6,15 @@
         <div class="col-8">
             <h2 class="my-4">Form Edit Siswa</h2>
             <?= $validationSiswa->listErrors(); ?>
-            <?php foreach ($siswa as $s) :?>
-            <form action="/admin/editSiswa/<?= $s['id_user']; ?>" method="POST" enctype="multipart/form-data">
+
+            <form action="/admin/editSiswa/<?= $siswa->id_user; ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="nama_user" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text"
                             class="form-control  <?= ($validationSiswa->hasError('nama_user')) ? 'is-invalid':''; ?>"
-                            name="nama_user" id="nama_user" autofocus value="<?= $s['nama_user']; ?>">
+                            name="nama_user" id="nama_user" autofocus value="<?= $siswa->nama_user; ?>">
                         <div class="invalid-feedback">
                             <?= $validationSiswa->getError('nama_user'); ?>
                         </div>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
             </form>
-            <?php endforeach; ?>
+
         </div>
     </div>
 </div>

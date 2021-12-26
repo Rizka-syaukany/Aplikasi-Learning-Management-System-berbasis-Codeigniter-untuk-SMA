@@ -159,7 +159,7 @@ class Admin extends BaseController
             'siswa'=> $this->userModel->siswa($id_siswa),
             'validationSiswa'=> \Config\Services::validation()
         ];
-        //  dd($data);
+        // dd($data);
         return view('admin/update_siswa',$data);
 
     }

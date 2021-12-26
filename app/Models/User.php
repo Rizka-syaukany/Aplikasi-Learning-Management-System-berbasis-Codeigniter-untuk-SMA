@@ -20,9 +20,7 @@ class USER extends Model
         'profile_user',
         'alamat_user'
     ];
-    public function siswa(){
-        return $this->db->table('user')
-        ->where('level',2)
-        ->get()->getResultArray();
+    public function siswa($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
     }
 }
