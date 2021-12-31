@@ -318,15 +318,33 @@ class Admin extends BaseController
                     'is_unique'=>'Nomer Telpon telah tersedia'
                 ]
                 ],
-        //         'profile_user'=>[
-        //             'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|uploaded[profile_user]|max_size[profile_user,2048]',
-        //             'errors'=>[
-        //                 'uploaded'=>'File belum di upload',
-        //                 'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-        //                 'is_image'=>'File yang anda Upload bukan gambar',
-        //                 'mime_in'=>'File yang anda Upload bukan gambar'
-        //             ]
-        //             ]
+                'email_user'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Email Belum Di isi'
+                    ]
+                    ],
+                'password'=>[
+                'rules'=>'required',
+                'errors'=>[
+                    'required'=>'Silahkan masukan password'
+                ]
+                ],
+                'alamat_user'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Silahkan masukan alamat'
+                    ]
+                    ],
+                'profile_user'=>[
+                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                    'errors'=>[
+                        // 'uploaded'=>'File belum di upload',
+                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                        'is_image'=>'File yang anda Upload bukan gambar',
+                        'mime_in'=>'File yang anda Upload bukan gambar'
+                    ]
+                    ]
       
         ])){
             // $validation = \Config\Services::validation();
@@ -336,11 +354,17 @@ class Admin extends BaseController
         }
         //ambil gambar
         $profile = $this->request->getFile('profile_user');
-        // dd($profile);
-        //pindah file ke img
-        $profile->move('img');
-        //ambil nama file
-        $namaProfile =$profile->getName();
+        //pengecekan gambar apakah ada atau tidak
+        if($profile->getError() == 4){
+            $namaProfile = 'default.png';
+        }else{
+            // dd($profile);
+            //pindah file ke img
+            $namaProfile =$profile->getName();
+            $profile->move('img',$namaProfile);
+            //ambil nama file
+            // $profile->move('img',$namaProfile);
+        }
 
         //memasukan data ke database
         // dd($this->request->getVar('kelas'));
@@ -350,7 +374,7 @@ class Admin extends BaseController
             'alamat_user' => $this->request->getVar('alamat'),
             'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
-            'password' => $this->request->getVar('password'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'telp_user' => $this->request->getVar('telp_user'),
             'profile_user' => $namaProfile,
             'level' => 2

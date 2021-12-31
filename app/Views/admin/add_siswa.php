@@ -58,8 +58,12 @@
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" id="password"
-                            value="<?= old('password'); ?>">
+                        <input type="password" class="form-control"
+                            <?= ($validationSiswa->hasError('password')) ? 'is-invalid':''; ?> name="password"
+                            id="password" value="<?= old('password'); ?>">
+                        <div class="invalid-feedback">
+                            <?= $validationSiswa->getError('password'); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
