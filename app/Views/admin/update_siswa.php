@@ -59,7 +59,12 @@
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" id="password" value="">
+                        <input type="password" class="form-control
+                            <?= ($validationSiswa->hasError('password')) ? 'is-invalid':''; ?>" name=" password"
+                            id="password" value="<?= old('password'); ?>">
+                        <div class="invalid-feedback">
+                            <?= $validationSiswa->getError('password'); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -67,7 +72,7 @@
                     <div class="col-sm-10">
                         <input type="number"
                             class="form-control <?= ($validationSiswa->hasError('telp_user')) ? 'is-invalid':''; ?>"
-                            name="telp_user" id="telp_user" value="<?= $siswa->email_user; ?>">
+                            name="telp_user" id="telp_user" value="<?= $siswa->telp_user; ?>">
                         <div class="invalid-feedback">
                             <?= $validationSiswa->getError('telp_user'); ?>
                         </div>
@@ -78,9 +83,10 @@
                     <div class="col-sm-10">
 
                         <select class="form-control" name="kelas" id="kelas" value="<?= old('kelas'); ?>">
-                            <option value="" hidden></option>
+                            <option value="<?= $kelas[0]['id_kelas']; ?>" hidden><?= $kelas[0]['nama_kelas'] ?>
+                            </option>
                             <label for="kelas">Pilih Kelas</label>
-                            <?php foreach($kelas as $k): ?>
+                            <?php foreach($kelasa as $k): ?>
                             <option value="<?= $k['id_kelas']; ?>"><?= $k['nama_kelas'];  ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -107,8 +113,8 @@
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Ubah</button>
                         <?php foreach ($kelas as $k): ?>
-                        <a href="/admin/tampilan_siswa/<?= $k['id_kelas']; ?>" <?php endforeach; ?>
-                            class="btn btn-danger my-2">Batal</a>
+                        <a href="/admin/tampilan_siswa/<?= $k['id_kelas']; ?>"
+                            <?php endforeach; ?>class="btn btn-danger my-2">Batal</a>
                     </div>
                 </div>
             </form>

@@ -31,6 +31,8 @@ class SiswaModel extends Model
         ->join('kelas','kelas.id_kelas = daftar_siswa.id_kelas')
         ->join('user','.user.id_user = daftar_siswa.id_user')
         ->where('daftar_siswa.id_kelas',$id_kelas)
+        ->orderBy('nama_user','asc')
+        ->distinct('nama_user')
         ->get()->getResultArray();
          $this->where(['id_kelas'=> $id_kelas]);
     }
@@ -39,6 +41,7 @@ class SiswaModel extends Model
         ->join('kelas','kelas.id_kelas = daftar_siswa.id_kelas')
         ->join('user','.user.id_user = daftar_siswa.id_user')
         ->where('daftar_siswa.id_user',$id_user)
+        ->distinct()
         ->get()->getResultArray();
          $this->where(['id_user'=> $id_user])->first();
     }

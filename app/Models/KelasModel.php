@@ -12,8 +12,13 @@ class KelasModel extends Model
     protected $allowedFields = [
         'nama_Kelas'
     ];
-    public function kelas(){
-        return $this->db->table('kelas')
+    public function kelas($id_siswa){
+        return $this->join('daftar_siswa','daftar_siswa.id_kelas = kelas.id_kelas')
+        ->where('daftar_siswa.id_user',$id_siswa)
         ->get()->getResultArray();
     }
+    public function kelasa(){
+        return $this->get()->getResultArray();
+    }
+    
 }

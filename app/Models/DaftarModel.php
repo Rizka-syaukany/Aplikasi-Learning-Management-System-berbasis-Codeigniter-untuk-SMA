@@ -13,4 +13,7 @@ class DaftarModel extends Model
         'id_kelas',
         'id_user'
     ];
+    public function daftar($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
+    }
 }
