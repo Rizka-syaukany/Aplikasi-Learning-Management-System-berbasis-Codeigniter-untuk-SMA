@@ -4,6 +4,11 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Daftar Kelas</h1>
+    <?php if(session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+    <?php endif; ?>
     <a href="/admin/add_siswa" class="btn btn-success">tambah siswa</a>
     <?php foreach ($kelas as $k) : ?>
     <div class="card w-25 mt-10">

@@ -36,6 +36,7 @@ $routes->get('/', 'lms::index');
 
 $routes->get('/admin/updateSiswa/(:segment)','Admin::updateSiswa/$1');
 $routes->delete('/admin/(:num)', 'Admin::delete/$1');
+$routes->delete('/admin/(:num)','Admin::delete_daftar/$1');
 $routes->post('/auth', 'Home::auth');
 $routes->get('/admin', 'Admin::index');
 
