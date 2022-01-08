@@ -42,7 +42,8 @@
                 <div class="form-group row">
                     <label for="jenis_kelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" value="">
+                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin"
+                            value="<?= $siswa->jenis_kelamin; ?>">
                             <option>Laki-laki</option>
                             <option>Perempuan</option>
                         </select>
@@ -83,8 +84,7 @@
                     <div class="col-sm-10">
 
                         <select class="form-control" name="kelas" id="kelas" value="<?= old('kelas'); ?>">
-                            <option value="<?= $kelas[0]['id_kelas']; ?>" hidden><?= $kelas[0]['nama_kelas'] ?>
-                            </option>
+                            <option value="" hidden></option>
                             <label for="kelas">Pilih Kelas</label>
                             <?php foreach($kelasa as $k): ?>
                             <option value="<?= $k['id_kelas']; ?>"><?= $k['nama_kelas'];  ?></option>
@@ -112,7 +112,7 @@
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Ubah</button>
-                        <?php foreach ($kelas as $k): ?>
+                        <?php foreach ($kelasa as $k): ?>
                         <a href="/admin/tampilan_siswa/<?= $k['id_kelas']; ?>"
                             <?php endforeach; ?>class="btn btn-danger my-2">Batal</a>
                     </div>

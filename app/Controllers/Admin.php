@@ -166,10 +166,31 @@ class Admin extends BaseController
         return view('admin/update_siswa',$data);
 
     }
+    public function updateAdmin($id_user){
+        $data = [
+            'title'=> 'update data admin',
+            'admin'=> $this->userModel->admin($id_user),
+            'validationAdmin'=> \Config\Services::validation()
+        ];
+        return view('admin/update_admin',$data);
+    }
+    public function updateGuru($id_user){
+        $data = [
+            'title'=> 'update data guru',
+            'guru'=> $this->userModel->guru($id_user),
+            'validationGuru'=> \Config\Services::validation()
+        ];
+        return view('admin/update_guru',$data);
+    }
     public function delete($id_user){
         $this->userModel->delete($id_user);
         session()->setFlashdata('pesan','Behasil menghapus data.');
-        return redirect()->to('/admin/tampil_admin');
+        return redirect()->to('/admin/admin');
+    }
+    public function deleteGuru($id_user){
+        $this->userModel->delete($id_user);
+        session()->setFlashdata('pesan','Behasil menghapus data.');
+        return redirect()->to('/admin/tampilan_guru');
     }
     public function delete_daftar($id_user){
         $this->userModel->delete($id_user);
@@ -561,5 +582,237 @@ class Admin extends BaseController
         session()->setFlashdata('pesan','Behasil mengubah data Siswa.');
         
         return redirect()->to('admin/tampilan_kelas');   
+    }
+    public function editAdmin($id_user)
+    {
+        // dd($this->request->getVar());
+        //cek data lama
+        // dd($id_daftar);
+        $dataLama= $this->userModel->siswa($id_user);
+        //  dd($dataLama);
+        $id_siswa = $id_user;
+        // dd($id_siswa);
+        $this->updateSiswa($id_siswa);
+        // dd($id_user);
+        //vaalidasi data nip
+        if ($dataLama->NIP== $this->request->getVar('nip')){
+            $nip = 'required';
+        }
+        else{
+            $nip = 'required|is_unique[user.NIP]';
+        }
+        // validasi data no telp
+        if ($dataLama->telp_user == $this->request->getVar('telp_user')){
+            $telp = 'required';
+        }else{
+            $telp = 'required|is_unique[user.telp_user]';
+        }
+        // dd($nip);
+        if(!$this->validate([
+            'nama_user'=>[
+                'rules'=> 'required',
+                'errors'=>[
+                    'required' =>'Nama harus diisi !'
+                ]
+            ],
+            'nip'=>[
+                'rules'=>$nip,
+                'errors'=>[
+                    'required'=>'Nomer Induk harus diisi !',
+                    'is_unique'=>'Nomer Induk telah tersedia'
+                ]
+                ],
+            'telp_user'=>[
+                'rules'=>$telp,
+                'errors'=>[
+                    'required'=>'Nomer Telpon Belum di Isi !',
+                    'is_unique'=>'Nomer Telpon telah tersedia'
+                ]
+                ],
+                'email_user'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Email Belum Di isi !'
+                    ]
+                    ],
+                'password'=>[
+                'rules'=>'required',
+                'errors'=>[
+                    'required'=>'Silahkan masukan password !'
+                ]
+                ],
+                'alamat'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Silahkan masukan alamat !'
+                    ]
+                    ],
+                'profile_user'=>[
+                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                    'errors'=>[
+                        // 'uploaded'=>'File belum di upload',
+                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                        'is_image'=>'File yang anda Upload bukan gambar',
+                        'mime_in'=>'File yang anda Upload bukan gambar'
+                    ]
+                    ]
+      
+        ]))
+        {
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
+            return redirect()->to('admin/updateAdmin/'.$id_siswa)->withInput();
+        }
+        //ambil gambar
+        $profile = $this->request->getFile('profile_user');
+        //pengecekan gambar apakah ada atau tidak
+        if($profile->getError() == 4){
+            $namaProfile = 'default.png';
+        }else{
+            // dd($profile);
+            //pindah file ke img
+            $namaProfile =$profile->getName();
+            $profile->move('img',$namaProfile);
+            //ambil nama file
+            // $profile->move('img',$namaProfile);
+        }
+
+        //memasukan data ke database
+        //  dd($this->request->getVar());
+        $this->userModel->save([
+            'id_user' =>$id_user,
+            'nama_user' => $this->request->getVar('nama_user'),
+            'NIP' => $this->request->getVar('nip'),
+            'alamat_user' => $this->request->getVar('alamat'),
+            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'email_user' => $this->request->getVar('email_user'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'telp_user' => $this->request->getVar('telp_user'),
+            'profile_user' => $namaProfile,
+            'level' => 1
+        ]);
+        // $userId = $this->userModel->insertID();
+        
+        // dd($this->daftarModel);
+        session()->setFlashdata('pesan','Behasil mengubah data admin.');
+        
+        return redirect()->to('/admin/admin');   
+    }
+    public function editguru($id_user)
+    {
+        // dd($this->request->getVar());
+        //cek data lama
+        // dd($id_daftar);
+        $dataLama= $this->userModel->siswa($id_user);
+        //  dd($dataLama);
+        $id_siswa = $id_user;
+        // dd($id_siswa);
+        $this->updateSiswa($id_siswa);
+        // dd($id_user);
+        //vaalidasi data nip
+        if ($dataLama->NIP== $this->request->getVar('nip')){
+            $nip = 'required';
+        }
+        else{
+            $nip = 'required|is_unique[user.NIP]';
+        }
+        // validasi data no telp
+        if ($dataLama->telp_user == $this->request->getVar('telp_user')){
+            $telp = 'required';
+        }else{
+            $telp = 'required|is_unique[user.telp_user]';
+        }
+        // dd($nip);
+        if(!$this->validate([
+            'nama_user'=>[
+                'rules'=> 'required',
+                'errors'=>[
+                    'required' =>'Nama harus diisi !'
+                ]
+            ],
+            'nip'=>[
+                'rules'=>$nip,
+                'errors'=>[
+                    'required'=>'Nomer Induk harus diisi !',
+                    'is_unique'=>'Nomer Induk telah tersedia'
+                ]
+                ],
+            'telp_user'=>[
+                'rules'=>$telp,
+                'errors'=>[
+                    'required'=>'Nomer Telpon Belum di Isi !',
+                    'is_unique'=>'Nomer Telpon telah tersedia'
+                ]
+                ],
+                'email_user'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Email Belum Di isi !'
+                    ]
+                    ],
+                'password'=>[
+                'rules'=>'required',
+                'errors'=>[
+                    'required'=>'Silahkan masukan password !'
+                ]
+                ],
+                'alamat'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Silahkan masukan alamat !'
+                    ]
+                    ],
+                'profile_user'=>[
+                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                    'errors'=>[
+                        // 'uploaded'=>'File belum di upload',
+                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                        'is_image'=>'File yang anda Upload bukan gambar',
+                        'mime_in'=>'File yang anda Upload bukan gambar'
+                    ]
+                    ]
+      
+        ]))
+        {
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
+            return redirect()->to('admin/updateGuru/'.$id_siswa)->withInput();
+        }
+        //ambil gambar
+        $profile = $this->request->getFile('profile_user');
+        //pengecekan gambar apakah ada atau tidak
+        if($profile->getError() == 4){
+            $namaProfile = 'default.png';
+        }else{
+            // dd($profile);
+            //pindah file ke img
+            $namaProfile =$profile->getName();
+            $profile->move('img',$namaProfile);
+            //ambil nama file
+            // $profile->move('img',$namaProfile);
+        }
+
+        //memasukan data ke database
+        //  dd($this->request->getVar());
+        $this->userModel->save([
+            'id_user' =>$id_user,
+            'nama_user' => $this->request->getVar('nama_user'),
+            'NIP' => $this->request->getVar('nip'),
+            'alamat_user' => $this->request->getVar('alamat'),
+            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'email_user' => $this->request->getVar('email_user'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'telp_user' => $this->request->getVar('telp_user'),
+            'profile_user' => $namaProfile,
+            'level' => 0
+        ]);
+        // $userId = $this->userModel->insertID();
+        
+        // dd($this->daftarModel);
+        session()->setFlashdata('pesan','Behasil mengubah data guru.');
+        
+        return redirect()->to('/admin/tampilan_guru');   
     }
 }

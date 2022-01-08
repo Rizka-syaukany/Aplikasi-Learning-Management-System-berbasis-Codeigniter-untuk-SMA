@@ -37,6 +37,8 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger"
                             onclick="return confirm('apakah anda yakin untuk menghapus <?= $a['nama_user']; ?>')">Delete</button>
+                        <a href="/admin/updateAdmin/<?= $a['id_user'];  ?>" class="btn btn-warning">Edit</a>
+
                     </form>
                 </td>
             </tr>

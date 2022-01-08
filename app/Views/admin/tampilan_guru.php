@@ -30,6 +30,13 @@
                 <td><?= $g['alamat_user']; ?></td>
                 <td><?= $g['jenis_kelamin']; ?></td>
                 <td><a class="btn btn-success" href="/admin/detail_guru/<?= $g['id_user']; ?>" role="button">Detail</a>
+                    <form action="/admin/deleteGuru/<?= $g['id_user']; ?> " method="POST" class="d-inline">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('apakah anda yakin untuk menghapus <?= $g['nama_user']; ?>')">Delete</button>
+                    </form>
+                    <a href="/admin/updateGuru/<?= $g['id_user'];  ?>" class="btn btn-warning">Edit</a>
                 </td>
             </tr>
             <?php endforeach; ?>

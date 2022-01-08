@@ -23,4 +23,10 @@ class USER extends Model
     public function siswa($id_user){
         return $this->where(['id_user'=>$id_user])->first();
     }
+    public function admin($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
+    }
+    public function guru($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
+    }
 }
