@@ -4,6 +4,13 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Halaman tampilan admin</h1>
+    <?php if(session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+    <?php endif; ?>
+    <a href="/admin/add_admin" class="btn btn-success my-2">Tambah Admin</a>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -25,6 +32,14 @@
                 <td><?= $a['jenis_kelamin']; ?></td>
                 <td><a class="btn btn-success" href="../admin/detail_admin/<?= $a['id_user']; ?>"
                         role="button">Detail</a>
+                    <form action="/admin/<?= $a['id_user']; ?> " method="POST" class="d-inline">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('apakah anda yakin untuk menghapus <?= $a['nama_user']; ?>')">Delete</button>
+                        <a href="/admin/updateAdmin/<?= $a['id_user'];  ?>" class="btn btn-warning">Edit</a>
+
+                    </form>
                 </td>
             </tr>
             <?php endforeach; ?>

@@ -4,7 +4,12 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <div class="container">
     <h1 class="text-center">Halaman tampilan guru</h1>
-    <a href="/admin/add_guru" class="btn btn-success">Tambah Guru</a>
+    <?php if(session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+    <?php endif; ?>
+    <a href="/admin/add_guru" class="btn btn-success my-2">Tambah Guru</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -25,6 +30,13 @@
                 <td><?= $g['alamat_user']; ?></td>
                 <td><?= $g['jenis_kelamin']; ?></td>
                 <td><a class="btn btn-success" href="/admin/detail_guru/<?= $g['id_user']; ?>" role="button">Detail</a>
+                    <form action="/admin/deleteGuru/<?= $g['id_user']; ?> " method="POST" class="d-inline">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('apakah anda yakin untuk menghapus <?= $g['nama_user']; ?>')">Delete</button>
+                    </form>
+                    <a href="/admin/updateGuru/<?= $g['id_user'];  ?>" class="btn btn-warning">Edit</a>
                 </td>
             </tr>
             <?php endforeach; ?>

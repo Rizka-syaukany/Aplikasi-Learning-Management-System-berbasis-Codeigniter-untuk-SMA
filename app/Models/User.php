@@ -13,6 +13,20 @@ class USER extends Model
         'nama_user',
         'email_user',
         'password',
-        'level'
+        'level',
+        'NIP',
+        'jenis_kelamin',
+        'telp_user',
+        'profile_user',
+        'alamat_user'
     ];
+    public function siswa($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
+    }
+    public function admin($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
+    }
+    public function guru($id_user){
+        return $this->where(['id_user'=>$id_user])->first();
+    }
 }

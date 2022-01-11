@@ -23,7 +23,7 @@
         <div class="card-body">
             <h5 class="card-title">Tampilkan table admin</h5>
             <p class="card-text">tempat untuk menampilkan table kelas</p>
-            <a href="/admin/tampil_admin" class="btn btn-primary">Tampilkan</a>
+            <a href="/admin/admin" class="btn btn-primary">Tampilkan</a>
         </div>
     </div>
 </div>

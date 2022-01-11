@@ -18,6 +18,6 @@ class GuruModel extends Model
         ->join('user','user.id_user = jadwal_pengajaran.id_user')
         ->where('jadwal_pengajaran.id_user', $id_user)
         ->get()->getResultArray();
-        $this->where(['id_user'=>$id_user]);
+        $this->where(['id_user'=>$id_user])->first();
     }
 }
