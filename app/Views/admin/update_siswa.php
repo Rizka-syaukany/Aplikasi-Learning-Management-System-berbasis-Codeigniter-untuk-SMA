@@ -2,13 +2,13 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
-<?= $this->include("layout/sidenavbar"); ?>
 
 
-<div class="container">
+
+<div class="container mt-5">
     <div class="row">
         <div class="col-8">
-            <h2 class="my-4">Form Edit Siswa</h2>
+            <h2 class="my-4 ">Form Edit Siswa</h2>
             <?= $validationSiswa->listErrors(); ?>
 
             <form action="/admin/editSiswa/<?= $siswa->id_user; ?>" method="POST" enctype="multipart/form-data">

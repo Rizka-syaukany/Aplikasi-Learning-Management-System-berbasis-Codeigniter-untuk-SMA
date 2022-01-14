@@ -33,7 +33,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'lms::index');
-
+$routes->get('/guru', 'Guru::index');
+$routes->get('/siswa', 'Siswa::index');
 $routes->get('/admin/updateSiswa/(:segment)','Admin::updateSiswa/$1');
 $routes->delete('/admin/(:num)', 'Admin::delete/$1');
 $routes->delete('/admin/deleteGuru/(:num)', 'Admin::deleteGuru/$1');

@@ -39,7 +39,7 @@
                         </div>
                         <h5 class="card-title text-white">Tampilkan Table Admin</h5>
                         <p class="card-text text-white">Tempat Untuk Menampilkan Table Kelas</p>
-                        <a href="/admin/tampil_admin" class="btn btn-danger rounded-0">Tampilkan</a>
+                        <a href="/admin/admin" class="btn btn-danger rounded-0">Tampilkan</a>
 
                     </div>
                 </div>

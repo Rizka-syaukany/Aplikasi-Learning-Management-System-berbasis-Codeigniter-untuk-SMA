@@ -3,9 +3,9 @@
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
 <?= $this->include("layout/sidenavbar"); ?>
-<div class="container">
+<div class="container ">
 
-    <h1 class="text-center">Halaman Tampilan Siswa</h1>
+    <h1 class="text-center ml-5 mt-5">Halaman Tampilan Siswa</h1>
 
     <div class="col-md-10 ml-auto">
         <table class="table table-striped">
