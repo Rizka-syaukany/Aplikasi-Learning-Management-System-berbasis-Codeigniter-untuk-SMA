@@ -146,7 +146,7 @@ class Admin extends BaseController
         }
         $data = [
             'title' => 'Detail Guru',
-            'detail'=> $this->guruModel->detail_guru($id_user)
+            'detail'=> $this->guruModel->d_guru($id_user)
         ];
         // dd($data);
         return view('admin/detail_guru',$data);

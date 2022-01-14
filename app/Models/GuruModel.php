@@ -20,4 +20,11 @@ class GuruModel extends Model
         ->get()->getResultArray();
         $this->where(['id_user'=>$id_user])->first();
     }
+    public function d_guru($id_user){
+        return $this->db->table('user')
+        ->where('level',0)
+        ->where('user.id_user', $id_user)
+        ->get()->getResultArray();
+        $this->where(['id_user'=> $id_user]);
+    }
 }
