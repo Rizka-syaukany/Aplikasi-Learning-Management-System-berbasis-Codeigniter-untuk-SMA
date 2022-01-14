@@ -2,15 +2,28 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
-<div class="container">
-    <h1 class="text-center">Daftar Kelas</h1>
+<?= $this->include("layout/sidenavbar"); ?>
+
+<div class="col-md-10 ml-auto">
+    <div class="shadow-sm p-3 mb-5 bg-white">
+        <h1 class="text-center mt-5 mb-5">Daftar Kelas</h1>
+    </div>  
+
+    <div class="shadow-sm py-3 px-7 bg-white">
     <?php foreach ($kelas as $k) : ?>
-    <div class="card w-25 mt-10">
-        <div class="card-body ">
-            <h5 class="card-title"><?= $k['nama_kelas']; ?></h5>
-            <a href="tampilan_siswa/<?= $k['id_kelas']; ?>" class="btn btn-primary">Tampilkan</a>
+    <div class="ml-5">
+        <div class="card w-75 mt-10" style="">
+            <div class="card-body bg-danger text-white">
+                <div class="card-body-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <h5 class="card-title"><?= $k['nama_kelas']; ?></h5>
+                <a href="tampilan_siswa/<?= $k['id_kelas']; ?>" class="btn btn-warning">Tampilkan</a>
+            </div>
         </div>
     </div>
     <?php endforeach; ?>
+    </div>
+    
 </div>
 <?= $this->endSection(); ?>

@@ -2,8 +2,11 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
+<?= $this->include("layout/sidenavbar"); ?>
+
 <div class="container">
-    <h1 class="text-center">Halaman Update kelas</h1>
+<div class="col-md-10 ml-auto">
+    <h1 class="text-center mt-5 mb-5">Halaman Update Kelas</h1>
     <form>
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
@@ -35,5 +38,6 @@
             </div>
         </div>
     </form>
+    </div>
 </div>
 <?= $this->endSection(); ?>
