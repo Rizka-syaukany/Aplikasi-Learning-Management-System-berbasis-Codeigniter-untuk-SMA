@@ -27,9 +27,11 @@ class Admin extends BaseController
         $this->adminModel = new AdminModel();
         $this->kelasModel = new KelasModel();
         $this->daftarModel = new DaftarModel();
+        $this->session = session();
     }
     public function index()
     {
+        
         $data = [
             'title' => 'halaman admin'
         ];
