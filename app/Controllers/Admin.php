@@ -31,6 +31,12 @@ class Admin extends BaseController
     }
     public function index()
     {
+        if(!$this->session->has('isLogin')){
+            return redirect()->to('/lms/login');
+        }
+        if($this->session->has('level')==0){
+            return redirect()->to('/guru');
+        }
         
         $data = [
             'title' => 'halaman admin'
