@@ -1,7 +1,8 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
-<div class="container">
+<?= $this->include("layout/navbar_admin"); ?>
+<div class="container mt-5">
     <div class="row">
         <div class="col-8">
             <h2 class="my-4">Form Tambah Siswa</h2>
