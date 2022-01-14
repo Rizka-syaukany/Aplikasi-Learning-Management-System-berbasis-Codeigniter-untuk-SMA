@@ -27,7 +27,19 @@
                 <td><?= $s['NIP']; ?></td>
                 <td><?= $s['jenis_kelamin']; ?></td>
                 <td><?= $s['nama_kelas']; ?></td>
+<<<<<<< HEAD
                 <td><a class="btn btn-danger rounded-0" href="../detail_siswa/<?= $s['id_user']; ?>" role="button">Lihat</a></td>
+=======
+                <td><a class="btn btn-success" href="../detail_siswa/<?= $s['id_user']; ?>" role="button">Detail</a>
+                    <form action="/admin/delete_daftar/<?= $s['id_user']; ?> " method="POST" class="d-inline">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('apakah anda yakin untuk menghapus <?= $s['nama_user']; ?>')">Delete</button>
+                    </form>
+                    <a href="/admin/updateSiswa/<?= $s['id_user'];  ?>" class="btn btn-warning">Edit</a>
+                </td>
+>>>>>>> f5c08cec8c1b2e00240e3e5ee99db6d7da017252
             </tr>
             <?php endforeach; ?>
         </tbody>

@@ -1,11 +1,13 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
 <div class="container">
+
     <div class="card mb-3" style="max-width: 540px;">
-        <?php  foreach($detail as $d) ?>
+        <h1>kenapa bang</h1>
+        <?php foreach ($detail as $d): ?>
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="/img/<?= $d['profile_user']; ?>" alt="...">
+                <img src="/img/<?= $d['profile_user']; ?>" class="profile_img" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -16,6 +18,7 @@
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <?= $this->endSection(); ?>

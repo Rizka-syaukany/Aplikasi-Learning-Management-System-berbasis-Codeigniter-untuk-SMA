@@ -33,12 +33,18 @@
     </div>
     <div class="card bg-success" id="card-tampilan">
         <div class="card-body">
+<<<<<<< HEAD
         <div class="card-body-icon">
                     <i class="fas fa-school"></i>
                 </div>
             <h5 class="card-title text-white">Tampilkan Table Admin</h5>
             <p class="card-text text-white">Tempat Untuk Menampilkan Table Kelas</p>
             <a href="/admin/tampil_admin" class="btn btn-danger rounded-0">Tampilkan</a>
+=======
+            <h5 class="card-title">Tampilkan table admin</h5>
+            <p class="card-text">tempat untuk menampilkan table kelas</p>
+            <a href="/admin/admin" class="btn btn-primary">Tampilkan</a>
+>>>>>>> f5c08cec8c1b2e00240e3e5ee99db6d7da017252
         </div>
     </div>
     </div>

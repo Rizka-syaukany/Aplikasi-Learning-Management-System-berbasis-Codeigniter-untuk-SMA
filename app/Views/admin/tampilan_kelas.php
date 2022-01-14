@@ -2,6 +2,7 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
+<<<<<<< HEAD
 <?= $this->include("layout/sidenavbar"); ?>
 
 <div class="col-md-10 ml-auto">
@@ -10,6 +11,16 @@
     </div>  
 
     <div class="shadow-sm py-3 px-7 bg-white">
+=======
+<div class="container">
+    <h1 class="text-center">Daftar Kelas</h1>
+    <?php if(session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+    <?php endif; ?>
+    <a href="/admin/add_siswa" class="btn btn-success">tambah siswa</a>
+>>>>>>> f5c08cec8c1b2e00240e3e5ee99db6d7da017252
     <?php foreach ($kelas as $k) : ?>
     <div class="ml-5">
         <div class="card w-75 mt-10" style="">

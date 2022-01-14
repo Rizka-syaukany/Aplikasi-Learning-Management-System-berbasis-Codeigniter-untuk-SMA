@@ -4,18 +4,18 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2 class="my-4">Form Tambah Guru</h2>
-            <?= $validation->listErrors(); ?>
-            <form action="/admin/save" method="POST" enctype="multipart/form-data">
+            <h2 class="my-4">Form Tambah Siswa</h2>
+            <?= $validationSiswa->listErrors(); ?>
+            <form action="/admin/saveSiswa" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="nama_user" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text"
-                            class="form-control  <?= ($validation->hasError('nama_user')) ? 'is-invalid':''; ?>"
+                            class="form-control  <?= ($validationSiswa->hasError('nama_user')) ? 'is-invalid':''; ?>"
                             name="nama_user" id="nama_user" autofocus value="<?= old('nama_user'); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('nama_user'); ?>
+                            <?= $validationSiswa->getError('nama_user'); ?>
                         </div>
                     </div>
 
@@ -24,22 +24,17 @@
                     <label for="nip" class="col-sm-2 col-form-label">Nomer induk</label>
                     <div class="col-sm-10">
                         <input type="number"
-                            class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid':''; ?>" name="nip"
-                            id="nip" value="<?= old('nip'); ?>">
+                            class="form-control <?= ($validationSiswa->hasError('nip')) ? 'is-invalid':''; ?>"
+                            name="nip" id="nip" value="<?= old('nip'); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('nip'); ?>
+                            <?= $validationSiswa->getError('nip'); ?>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10">
-                        <input type="text"
-                            class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid':''; ?>"
-                            name="alamat" id="alamat" value="<?= old('alamat'); ?>">
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('alamat'); ?>
-                        </div>
+                        <input type="text" class="form-control" name="alamat" id="alamat" value="<?= old('alamat'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -56,33 +51,25 @@
                 <div class="form-group row">
                     <label for="email_user" class="col-sm-2 col-form-label">email</label>
                     <div class="col-sm-10">
-                        <input type="email"
-                            class="form-control  <?= ($validation->hasError('email_user')) ? 'is-invalid':''; ?> "
-                            name="email_user" id="email_user" value="<?= old('email_user'); ?>">
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('email_user'); ?>
-                        </div>
+                        <input type="email" class="form-control" name="email_user" id="email_user"
+                            value="<?= old('email_user'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control
-                            <?= ($validation->hasError('password')) ? 'is-invalid':''; ?>" name=" password"
-                            id="password" value="<?= old('password'); ?>">
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('password'); ?>
-                        </div>
+                        <input type="password" class="form-control" name="password" id="password"
+                            value="<?= old('password'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="telp_user" class="col-sm-2 col-form-label">no telp</label>
                     <div class="col-sm-10">
                         <input type="number"
-                            class="form-control <?= ($validation->hasError('telp_user')) ? 'is-invalid':''; ?>"
+                            class="form-control <?= ($validationSiswa->hasError('telp_user')) ? 'is-invalid':''; ?>"
                             name="telp_user" id="telp_user" value="<?= old('telp_user'); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('telp_user'); ?>
+                            <?= $validationSiswa->getError('telp_user'); ?>
                         </div>
                     </div>
                 </div>
@@ -91,10 +78,10 @@
                     <div class="col-sm-10 ">
                         <div class="custom-file">
                             <input type="file"
-                                class="custom-file-input <?= $validation->hasError('profile_user') ?'is-invalid':''; ?>"
+                                class="custom-file-input <?= $validationSiswa->hasError('profile_user') ?'is-invalid':''; ?>"
                                 id="profile_user" name="profile_user">
                             <div class="invalid-feedback">
-                                <?= $validation->getError('profile_user'); ?>
+                                <?= $validationSiswa->getError('profile_user'); ?>
                             </div>
                             <label class="custom-file-label" for="profile_user">Choose file</label>
                         </div>

@@ -9,8 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/style.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="/js/script.js">
     <link rel="stylesheet" href="/css/stylenavbar.css">
+=======
+>>>>>>> f5c08cec8c1b2e00240e3e5ee99db6d7da017252
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
