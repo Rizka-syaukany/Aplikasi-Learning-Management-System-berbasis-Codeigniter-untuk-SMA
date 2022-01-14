@@ -31,7 +31,7 @@ class Admin extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'halaman admin'
+            'title' => 'Halaman Admin'
         ];
         return view('admin/index', $data);
         // echo 'Saya Rizka Akbar Syaukany';
@@ -86,7 +86,7 @@ class Admin extends BaseController
     }
     public function tampilan_kelas(){
         $data = [
-            'title' => 'Tampilan kelas',
+            'title' => 'Tampilan Kelas',
             'kelas' => $this->siswaModel->get_kelas()
             
         ];

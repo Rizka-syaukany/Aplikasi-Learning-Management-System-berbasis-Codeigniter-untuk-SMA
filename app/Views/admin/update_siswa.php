@@ -1,6 +1,10 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
+<?= $this->include("layout/navbar_admin"); ?>
+<?= $this->include("layout/sidenavbar"); ?>
+
+
 <div class="container">
     <div class="row">
         <div class="col-8">
