@@ -1,5 +1,6 @@
 .profile_img {
-  height: 200px;
+  height: 300px;
+  width: 250px;
 }
 
 .bg-nav {
@@ -7,7 +8,7 @@
 }
 
 .bg-sidebar {
-  background-color: #ffedda;
+  background-color: #fff1bd;
   min-height: 100vh;
 }
 

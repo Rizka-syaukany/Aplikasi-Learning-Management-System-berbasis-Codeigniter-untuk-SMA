@@ -1,3 +1,4 @@
+
 <div class="row no-gutters mt-5 ">
     <div class="col-md-2 bg-sidebar mt-2 pr-3 pt-4" id="sidebar">
         <img src="/img/profile.jpg" class="img-responsive img-profile mt-3" alt="...">

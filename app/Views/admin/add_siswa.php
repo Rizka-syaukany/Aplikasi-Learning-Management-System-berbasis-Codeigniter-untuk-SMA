@@ -1,10 +1,15 @@
 <?= $this->extend('layout/template'); ?>
-
 <?= $this->section('content'); ?>
+<?= $this->include("layout/navbar_admin"); ?>
+<?= $this->include("layout/sidenavbar"); ?>
+
+<div class="col-md-10 ml-auto">
+    <div class="shadow-sm p-3 mb-5 bg-white">
+        <h2 class="text-center mt-5 mb-5">Form Tambah Siswa</h2>
+    </div>
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <h2 class="my-4">Form Tambah Siswa</h2>
+    <div class="row ml-5">
+        <div class="col-10 ml-3">
             <?= $validationSiswa->listErrors(); ?>
             <form action="/admin/saveSiswa" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
@@ -21,7 +26,7 @@
 
                 </div>
                 <div class="form-group row">
-                    <label for="nip" class="col-sm-2 col-form-label">Nomer induk</label>
+                    <label for="nip" class="col-sm-2 col-form-label">Nomor Induk</label>
                     <div class="col-sm-10">
                         <input type="number"
                             class="form-control <?= ($validationSiswa->hasError('nip')) ? 'is-invalid':''; ?>"
@@ -54,7 +59,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email_user" class="col-sm-2 col-form-label">email</label>
+                    <label for="email_user" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
                         <input type="email"
                             class="form-control  <?= ($validationSiswa->hasError('email_user')) ? 'is-invalid':''; ?> "
@@ -76,7 +81,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="telp_user" class="col-sm-2 col-form-label">no telp</label>
+                    <label for="telp_user" class="col-sm-2 col-form-label">No telp</label>
                     <div class="col-sm-10">
                         <input type="number"
                             class="form-control <?= ($validationSiswa->hasError('telp_user')) ? 'is-invalid':''; ?>"
@@ -101,7 +106,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="profile_user" class="col-sm-2 col-form-label">profile</label>
+                    <label for="profile_user" class="col-sm-2 col-form-label">Profile</label>
                     <div class="col-sm-10 ">
                         <div class="custom-file">
                             <input type="file"
@@ -110,7 +115,7 @@
                             <div class="invalid-feedback">
                                 <?= $validationSiswa->getError('profile_user'); ?>
                             </div>
-                            <label class="custom-file-label" for="profile_user">Choose file</label>
+                            <label class="custom-file-label" for="profile_user">Choose File</label>
                         </div>
                         <!-- <label for="profile_user">upload file</label>
                         <input type="file" class="form-control-file" id="profile_user" name="profile_user"> -->
@@ -118,12 +123,13 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Tambah data</button>
-                        <a href="/admin/tampilan_kelas" class="btn btn-danger my-2">Batal</a>
+                        <button type="submit" class="btn btn-primary rounded-0 mr-2">Tambah Data</button>
+                        <a href="/admin/tampilan_kelas" class="btn btn-danger my-2 rounded-0">Batal</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+</div>
 </div>
 <?= $this->endSection(); ?>

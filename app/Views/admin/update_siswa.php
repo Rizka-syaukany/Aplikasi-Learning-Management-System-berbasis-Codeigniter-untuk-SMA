@@ -4,11 +4,13 @@
 <?= $this->include("layout/navbar_admin"); ?>
 <?= $this->include("layout/sidenavbar"); ?>
 
-
+<div class="col-md-10 ml-auto">
+    <div class="shadow-sm p-3 mb-5 bg-white">
+        <h1 class="text-center mt-5 mb-5">Form Edit Siswa</h1>
+    </div>
 <div class="container">
     <div class="row">
-        <div class="col-8">
-            <h2 class="my-4">Form Edit Siswa</h2>
+        <div class="col-10 ml-5">
             <?= $validationSiswa->listErrors(); ?>
 
             <form action="/admin/editSiswa/<?= $siswa->id_user; ?>" method="POST" enctype="multipart/form-data">
@@ -115,15 +117,16 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Ubah</button>
+                        <button type="submit" class="btn btn-primary rounded-0">Ubah</button>
                         <?php foreach ($kelasa as $k): ?>
                         <a href="/admin/tampilan_siswa/<?= $k['id_kelas']; ?>"
-                            <?php endforeach; ?>class="btn btn-danger my-2">Batal</a>
+                            <?php endforeach; ?>class="btn btn-danger my-2 rounded-0">Batal</a>
                     </div>
                 </div>
             </form>
 
         </div>
     </div>
+</div>
 </div>
 <?= $this->endSection(); ?>
