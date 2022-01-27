@@ -2,13 +2,13 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
-<?= $this->include("layout/sidenavbar"); ?>
+
 
 
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2 class="my-4">Form update Admin</h2>
+            <h2 class="my-4">Form update guru</h2>
             <form action="/admin/editguru/<?= $guru->id_user; ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
