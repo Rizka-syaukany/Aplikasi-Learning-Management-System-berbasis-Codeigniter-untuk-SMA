@@ -5,7 +5,7 @@
 <div class="container ">
     <div class="card mx-auto mt-5 pt-3" style="max-width: 540px;">
         <?php  foreach($detail as $d) ?>
-        <h4 class="text-center mt-2 py-3">Detail Admin</h4>
+        <h4 class="text-center mt-2 py-3">Detail Guru</h4>
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="/img/<?= $d['profile_user']; ?>" alt="...">

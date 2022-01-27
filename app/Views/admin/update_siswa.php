@@ -9,7 +9,6 @@
     <div class="row">
         <div class="col-8">
             <h2 class="my-4 ">Form Edit Siswa</h2>
-            <?= $validationSiswa->listErrors(); ?>
 
             <form action="/admin/editSiswa/<?= $siswa->id_user; ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>

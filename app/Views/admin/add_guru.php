@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-8">
             <h2 class="my-4">Form Tambah Guru</h2>
-            <?= $validation->listErrors(); ?>
             <form action="/admin/save" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">

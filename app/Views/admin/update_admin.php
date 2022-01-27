@@ -6,7 +6,6 @@
     <div class="row">
         <div class="col-8">
             <h2 class="my-4">Form update Admin</h2>
-            <?= $validationAdmin->listErrors(); ?>
             <form action="/admin/editAdmin/<?= $admin->id_user; ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
