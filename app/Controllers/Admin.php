@@ -31,228 +31,260 @@ class Admin extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Halaman Admin'
+            'title' => 'Halaman Admin',
+            // 'count_guru' => $this->adminModel->count_guru(),
+            // 'count_siswa' => $this->adminModel->count_siswa(),
+            // 'count_admin' => $this->adminModel->count_admin()
         ];
         return view('admin/index', $data);
         // echo 'Saya Rizka Akbar Syaukany';
-        
+
     }
-    public function update(){
+
+    public function profile()
+    {
+        $data = [
+            'title' => 'Profile'
+        ];
+        return view('admin/profile', $data);
+    }
+
+    public function update()
+    {
         $data = [
             'title' => 'Update Data'
         ];
         return view('admin/update', $data);
     }
-    public function update_siswa(){
+    public function update_siswa()
+    {
         $data = [
             'title' => 'update_siswa'
         ];
-        return view('admin/update_siswa',$data);
+        return view('admin/update_siswa', $data);
     }
-    public function update_guru(){
+    public function update_guru()
+    {
         $data = [
             'title' => 'update_guru'
         ];
-        return view('admin/update_guru',$data);
+        return view('admin/update_guru', $data);
     }
-    public function update_kelas(){
+    public function update_kelas()
+    {
         $data = [
             'title' => 'update_kelas'
         ];
-        return view('admin/update_kelas',$data);
+        return view('admin/update_kelas', $data);
     }
-    public function tampilan(){
+    public function tampilan()
+    {
         $data = [
             'title' => 'Tampilan'
         ];
-        return view('admin/tampilan',$data);
+        return view('admin/tampilan', $data);
     }
-    public function tampilan_siswa($id_kelas){
+    public function tampilan_siswa($id_kelas)
+    {
         $data = [
             'title' => 'Tampilan Siswa',
             'siswa' => $this->siswaModel->get_siswa($id_kelas)
         ];
         // dd($data);
-        return view('admin/tampilan_siswa',$data);
+        return view('admin/tampilan_siswa', $data);
         // echo $id_kelas;
     }
-    public function tampilan_guru(){
+    public function tampilan_guru()
+    {
         $data = [
             'title' => 'Tampilan Guru',
             'guru' => $this->guruModel->get_guru()
         ];
         // dd($data);
-        return view('admin/tampilan_guru',$data);
+        return view('admin/tampilan_guru', $data);
     }
-    public function tampilan_kelas(){
+    public function tampilan_kelas()
+    {
         $data = [
             'title' => 'Tampilan Kelas',
             'kelas' => $this->siswaModel->get_kelas()
-            
+
         ];
-      
-        return view('admin/tampilan_kelas',$data);
+
+        return view('admin/tampilan_kelas', $data);
     }
-    public function detail_siswa($id_user){
+    public function detail_siswa($id_user)
+    {
         $data = [
             'title' => 'Detail Siswa',
             'detail' => $this->siswaModel->detailSiswa($id_user)
-            
+
         ];
         // dd($data);
-        return view('admin/detail_siswa',$data);
+        return view('admin/detail_siswa', $data);
     }
-    public function detail_guru($id_user){
+    public function detail_guru($id_user)
+    {
         $data = [
             'title' => 'Detail Guru',
-            'detail'=> $this->guruModel->detail_guru($id_user)
+            'detail' => $this->guruModel->detail_guru($id_user)
         ];
         // dd($data);
-        return view('admin/detail_guru',$data);
+        return view('admin/detail_guru', $data);
     }
-    public function  admin(){
+    public function  admin()
+    {
         $data = [
             'title' => 'Detail Admin',
-            'admin'=> $this->adminModel->get_admin()
+            'admin' => $this->adminModel->get_admin()
         ];
         // dd($data);
-        return view('admin/tampilan_admin',$data);
+        return view('admin/tampilan_admin', $data);
     }
-    public function detail_admin($id_user){
+    public function detail_admin($id_user)
+    {
         $data = [
-            'title'=> 'Detail Admmin',
-            'detail'=> $this->adminModel->get_admin($id_user)
+            'title' => 'Detail Admmin',
+            'detail' => $this->adminModel->get_admin($id_user)
         ];
         // dd($data);
-        return view('admin/detail_admin',$data);
+        return view('admin/detail_admin', $data);
     }
-    public function add_guru(){
-   
+    public function add_guru()
+    {
+
         $data = [
-            'title'=> 'Tambah guru',
-            'validation'=> \Config\Services::validation()
+            'title' => 'Tambah guru',
+            'validation' => \Config\Services::validation()
         ];
-        return view('admin/add_guru',$data);
+        return view('admin/add_guru', $data);
     }
-    public function add_admin(){
-   
+    public function add_admin()
+    {
+
         $data = [
-            'title'=> 'Tambah Admin',
-            'validationAdmin'=> \Config\Services::validation()
+            'title' => 'Tambah Admin',
+            'validationAdmin' => \Config\Services::validation()
         ];
         // dd($data);
-        return view('admin/add_admin',$data);
+        return view('admin/add_admin', $data);
     }
-    public function add_siswa(){
-   
+    public function add_siswa()
+    {
+
         $data = [
-            'title'=> 'Tambah siswa',
-            'kelas'=> $this->kelasModel->kelasa(),
-            'validationSiswa'=> \Config\Services::validation()
+            'title' => 'Tambah siswa',
+            'kelas' => $this->kelasModel->kelasa(),
+            'validationSiswa' => \Config\Services::validation()
         ];
         //  dd($data);
-        return view('admin/add_siswa',$data);
+        return view('admin/add_siswa', $data);
     }
-    public function updateSiswa($id_siswa='' ){
+    public function updateSiswa($id_siswa = '')
+    {
         $data = [
-            'title'=> 'Form Ubah Siswa',
-            'kelas'=> $this->kelasModel->kelas($id_siswa),
-            'kelasa'=>$this->kelasModel->kelasa(),
-            'siswa'=> $this->userModel->siswa($id_siswa),
-            'daftar'=>$this->daftarModel->daftar($id_siswa),
-            'validationSiswa'=> \Config\Services::validation()
+            'title' => 'Form Ubah Siswa',
+            'kelas' => $this->kelasModel->kelas($id_siswa),
+            'kelasa' => $this->kelasModel->kelasa(),
+            'siswa' => $this->userModel->siswa($id_siswa),
+            'daftar' => $this->daftarModel->daftar($id_siswa),
+            'validationSiswa' => \Config\Services::validation()
         ];
         // dd($data);
-        return view('admin/update_siswa',$data);
-
+        return view('admin/update_siswa', $data);
     }
-    public function updateAdmin($id_user){
+    public function updateAdmin($id_user)
+    {
         $data = [
-            'title'=> 'update data admin',
-            'admin'=> $this->userModel->admin($id_user),
-            'validationAdmin'=> \Config\Services::validation()
+            'title' => 'update data admin',
+            'admin' => $this->userModel->admin($id_user),
+            'validationAdmin' => \Config\Services::validation()
         ];
-        return view('admin/update_admin',$data);
+        return view('admin/update_admin', $data);
     }
-    public function updateGuru($id_user){
+    public function updateGuru($id_user)
+    {
         $data = [
-            'title'=> 'update data guru',
-            'guru'=> $this->userModel->guru($id_user),
-            'validationGuru'=> \Config\Services::validation()
+            'title' => 'update data guru',
+            'guru' => $this->userModel->guru($id_user),
+            'validationGuru' => \Config\Services::validation()
         ];
-        return view('admin/update_guru',$data);
+        return view('admin/update_guru', $data);
     }
-    public function delete($id_user){
+    public function delete($id_user)
+    {
         $this->userModel->delete($id_user);
-        session()->setFlashdata('pesan','Behasil menghapus data.');
+        session()->setFlashdata('pesan', 'Behasil menghapus data.');
         return redirect()->to('/admin/admin');
     }
-    public function deleteGuru($id_user){
+    public function deleteGuru($id_user)
+    {
         $this->userModel->delete($id_user);
-        session()->setFlashdata('pesan','Behasil menghapus data.');
+        session()->setFlashdata('pesan', 'Behasil menghapus data.');
         return redirect()->to('/admin/tampilan_guru');
     }
-    public function delete_daftar($id_user){
+    public function delete_daftar($id_user)
+    {
         $this->userModel->delete($id_user);
         $this->daftarModel->delete($id_user);
-        session()->setFlashdata('pesan','Behasil menghapus data siswa');
+        session()->setFlashdata('pesan', 'Behasil menghapus data siswa');
         // return redirect()->to('/admin/tampilan/siswa');
         return redirect()->to('/admin/tampilan_kelas');
     }
-    
-    public function save(){
+
+    public function save()
+    {
         //validasi
-        if(!$this->validate([
-            'nama_user'=>[
-                'rules'=> 'required',
-                'errors'=>[
-                    'required' =>'Nama harus diisi !'
+        if (!$this->validate([
+            'nama_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi !'
                 ]
             ],
-            'nip'=>[
-                'rules'=>'required|is_unique[user.NIP]',
-                'errors'=>[
-                    'required'=>'Nomer Induk harus diisi !',
-                    'is_unique'=>'Nomer Induk telah tersedia'
+            'nip' => [
+                'rules' => 'required|is_unique[user.NIP]',
+                'errors' => [
+                    'required' => 'Nomer Induk harus diisi !',
+                    'is_unique' => 'Nomer Induk telah tersedia'
                 ]
-                ],
-            'telp_user'=>[
-                'rules'=>'required|is_unique[user.telp_user]',
-                'errors'=>[
-                    'required'=>'Nomer Telpon Belum di Isi !',
-                    'is_unique'=>'Nomer Telpon telah tersedia'
+            ],
+            'telp_user' => [
+                'rules' => 'required|is_unique[user.telp_user]',
+                'errors' => [
+                    'required' => 'Nomer Telpon Belum di Isi !',
+                    'is_unique' => 'Nomer Telpon telah tersedia'
                 ]
-                ],
-                'email_user'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Email Belum Di isi !'
-                    ]
-                    ],
-                'password'=>[
-                'rules'=>'required',
-                'errors'=>[
-                    'required'=>'Silahkan masukan password !'
+            ],
+            'email_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email Belum Di isi !'
                 ]
-                ],
-                'alamat'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Silahkan masukan alamat !'
-                    ]
-                    ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
-                    'errors'=>[
-                        // 'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
-      
-        ]))
-        {
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan password !'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan alamat !'
+                ]
+            ],
+            'profile_user' => [
+                'rules' => 'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                'errors' => [
+                    // 'uploaded'=>'File belum di upload',
+                    'max_size' => 'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                    'is_image' => 'File yang anda Upload bukan gambar',
+                    'mime_in' => 'File yang anda Upload bukan gambar'
+                ]
+            ]
+
+        ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
@@ -264,76 +296,76 @@ class Admin extends BaseController
         //pindah file ke img
         $profile->move('img');
         //ambil nama file
-        $namaProfile =$profile->getName();
+        $namaProfile = $profile->getName();
 
         //memasukan data ke database
         $this->userModel->save([
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
-            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
             'password' => $this->request->getVar('password'),
             'telp_user' => $this->request->getVar('telp_user'),
             'profile_user' => $namaProfile,
             'level' => 0
         ]);
-        session()->setFlashdata('pesan','Behasil menambahkan data guru.');
+        session()->setFlashdata('pesan', 'Behasil menambahkan data guru.');
         return redirect()->to('/admin/tampilan_guru');
     }
-    public function saveAdmin(){
+    public function saveAdmin()
+    {
         //validasi
-        if(!$this->validate([
-            'nama_user'=>[
-                'rules'=> 'required',
-                'errors'=>[
-                    'required' =>'Nama harus diisi !'
+        if (!$this->validate([
+            'nama_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi !'
                 ]
             ],
-            'nip'=>[
-                'rules'=>'required|is_unique[user.NIP]',
-                'errors'=>[
-                    'required'=>'Nomer Induk harus diisi !',
-                    'is_unique'=>'Nomer Induk telah tersedia'
+            'nip' => [
+                'rules' => 'required|is_unique[user.NIP]',
+                'errors' => [
+                    'required' => 'Nomer Induk harus diisi !',
+                    'is_unique' => 'Nomer Induk telah tersedia'
                 ]
-                ],
-            'telp_user'=>[
-                'rules'=>'required|is_unique[user.telp_user]',
-                'errors'=>[
-                    'required'=>'Nomer Telpon Belum di Isi !',
-                    'is_unique'=>'Nomer Telpon telah tersedia'
+            ],
+            'telp_user' => [
+                'rules' => 'required|is_unique[user.telp_user]',
+                'errors' => [
+                    'required' => 'Nomer Telpon Belum di Isi !',
+                    'is_unique' => 'Nomer Telpon telah tersedia'
                 ]
-                ],
-                'email_user'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Email Belum Di isi !'
-                    ]
-                    ],
-                'password'=>[
-                'rules'=>'required',
-                'errors'=>[
-                    'required'=>'Silahkan masukan password !'
+            ],
+            'email_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email Belum Di isi !'
                 ]
-                ],
-                'alamat'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Silahkan masukan alamat !'
-                    ]
-                    ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
-                    'errors'=>[
-                        // 'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
-      
-        ]))
-        {
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan password !'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan alamat !'
+                ]
+            ],
+            'profile_user' => [
+                'rules' => 'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                'errors' => [
+                    // 'uploaded'=>'File belum di upload',
+                    'max_size' => 'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                    'is_image' => 'File yang anda Upload bukan gambar',
+                    'mime_in' => 'File yang anda Upload bukan gambar'
+                ]
+            ]
+
+        ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
@@ -345,76 +377,76 @@ class Admin extends BaseController
         //pindah file ke img
         $profile->move('img');
         //ambil nama file
-        $namaProfile =$profile->getName();
+        $namaProfile = $profile->getName();
 
         //memasukan data ke database
         $this->userModel->save([
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
-            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
             'password' => $this->request->getVar('password'),
             'telp_user' => $this->request->getVar('telp_user'),
             'profile_user' => $namaProfile,
             'level' => 1
         ]);
-        session()->setFlashdata('pesan','Behasil menambahkan data Admin.');
+        session()->setFlashdata('pesan', 'Behasil menambahkan data Admin.');
         return redirect()->to('/admin/tampil_admin');
     }
-    public function saveSiswa(){
+    public function saveSiswa()
+    {
         //validasi
-        if(!$this->validate([
-            'nama_user'=>[
-                'rules'=> 'required',
-                'errors'=>[
-                    'required' =>'Nama harus diisi !'
+        if (!$this->validate([
+            'nama_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi !'
                 ]
             ],
-            'nip'=>[
-                'rules'=>'required|is_unique[user.NIP]',
-                'errors'=>[
-                    'required'=>'Nomer Induk harus diisi !',
-                    'is_unique'=>'Nomer Induk telah tersedia'
+            'nip' => [
+                'rules' => 'required|is_unique[user.NIP]',
+                'errors' => [
+                    'required' => 'Nomer Induk harus diisi !',
+                    'is_unique' => 'Nomer Induk telah tersedia'
                 ]
-                ],
-            'telp_user'=>[
-                'rules'=>'required|is_unique[user.telp_user]',
-                'errors'=>[
-                    'required'=>'Nomer Telpon Belum di Isi !',
-                    'is_unique'=>'Nomer Telpon telah tersedia'
+            ],
+            'telp_user' => [
+                'rules' => 'required|is_unique[user.telp_user]',
+                'errors' => [
+                    'required' => 'Nomer Telpon Belum di Isi !',
+                    'is_unique' => 'Nomer Telpon telah tersedia'
                 ]
-                ],
-                'email_user'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Email Belum Di isi !'
-                    ]
-                    ],
-                'password'=>[
-                'rules'=>'required',
-                'errors'=>[
-                    'required'=>'Silahkan masukan password !'
+            ],
+            'email_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email Belum Di isi !'
                 ]
-                ],
-                'alamat'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Silahkan masukan alamat !'
-                    ]
-                    ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
-                    'errors'=>[
-                        // 'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
-      
-        ]))
-        {
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan password !'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan alamat !'
+                ]
+            ],
+            'profile_user' => [
+                'rules' => 'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                'errors' => [
+                    // 'uploaded'=>'File belum di upload',
+                    'max_size' => 'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                    'is_image' => 'File yang anda Upload bukan gambar',
+                    'mime_in' => 'File yang anda Upload bukan gambar'
+                ]
+            ]
+
+        ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
@@ -423,13 +455,13 @@ class Admin extends BaseController
         //ambil gambar
         $profile = $this->request->getFile('profile_user');
         //pengecekan gambar apakah ada atau tidak
-        if($profile->getError() == 4){
+        if ($profile->getError() == 4) {
             $namaProfile = 'default.png';
-        }else{
+        } else {
             // dd($profile);
             //pindah file ke img
-            $namaProfile =$profile->getName();
-            $profile->move('img',$namaProfile);
+            $namaProfile = $profile->getName();
+            $profile->move('img', $namaProfile);
             //ambil nama file
             // $profile->move('img',$namaProfile);
         }
@@ -440,7 +472,7 @@ class Admin extends BaseController
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
-            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'telp_user' => $this->request->getVar('telp_user'),
@@ -448,16 +480,16 @@ class Admin extends BaseController
             'level' => 2
         ]);
         $userId = $this->userModel->insertID();
-        $daftar=[
-            'id_kelas'=>$this->request->getGetPost('kelas'),
-            'id_user'=>$userId
+        $daftar = [
+            'id_kelas' => $this->request->getGetPost('kelas'),
+            'id_user' => $userId
         ];
         $this->daftarModel->insert($daftar);
-        
+
         // dd($this->daftarModel);
-        session()->setFlashdata('pesan','Behasil menambahkan data Siswa.');
-        
-        return redirect()->to('admin/tampilan_kelas');    
+        session()->setFlashdata('pesan', 'Behasil menambahkan data Siswa.');
+
+        return redirect()->to('admin/tampilan_kelas');
     }
     public function editSiswa($id_user)
     {
@@ -466,92 +498,90 @@ class Admin extends BaseController
         $daftarAll = $this->daftarModel->daftar($id_user);
         $id_daftar = $daftarAll->id_daftar_siswa;
         // dd($id_daftar);
-        $dataLama= $this->userModel->siswa($id_user);
+        $dataLama = $this->userModel->siswa($id_user);
         //  dd($dataLama);
         $id_siswa = $id_user;
         // dd($id_siswa);
         $this->updateSiswa($id_siswa);
         // dd($id_user);
         //vaalidasi data nip
-        if ($dataLama->NIP== $this->request->getVar('nip')){
+        if ($dataLama->NIP == $this->request->getVar('nip')) {
             $nip = 'required';
-        }
-        else{
+        } else {
             $nip = 'required|is_unique[user.NIP]';
         }
         // validasi data no telp
-        if ($dataLama->telp_user == $this->request->getVar('telp_user')){
+        if ($dataLama->telp_user == $this->request->getVar('telp_user')) {
             $telp = 'required';
-        }else{
+        } else {
             $telp = 'required|is_unique[user.telp_user]';
         }
         // dd($nip);
-        if(!$this->validate([
-            'nama_user'=>[
-                'rules'=> 'required',
-                'errors'=>[
-                    'required' =>'Nama harus diisi !'
+        if (!$this->validate([
+            'nama_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi !'
                 ]
             ],
-            'nip'=>[
-                'rules'=>$nip,
-                'errors'=>[
-                    'required'=>'Nomer Induk harus diisi !',
-                    'is_unique'=>'Nomer Induk telah tersedia'
+            'nip' => [
+                'rules' => $nip,
+                'errors' => [
+                    'required' => 'Nomer Induk harus diisi !',
+                    'is_unique' => 'Nomer Induk telah tersedia'
                 ]
-                ],
-            'telp_user'=>[
-                'rules'=>$telp,
-                'errors'=>[
-                    'required'=>'Nomer Telpon Belum di Isi !',
-                    'is_unique'=>'Nomer Telpon telah tersedia'
+            ],
+            'telp_user' => [
+                'rules' => $telp,
+                'errors' => [
+                    'required' => 'Nomer Telpon Belum di Isi !',
+                    'is_unique' => 'Nomer Telpon telah tersedia'
                 ]
-                ],
-                'email_user'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Email Belum Di isi !'
-                    ]
-                    ],
-                'password'=>[
-                'rules'=>'required',
-                'errors'=>[
-                    'required'=>'Silahkan masukan password !'
+            ],
+            'email_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email Belum Di isi !'
                 ]
-                ],
-                'alamat'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Silahkan masukan alamat !'
-                    ]
-                    ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
-                    'errors'=>[
-                        // 'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
-      
-        ]))
-        {
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan password !'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan alamat !'
+                ]
+            ],
+            'profile_user' => [
+                'rules' => 'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                'errors' => [
+                    // 'uploaded'=>'File belum di upload',
+                    'max_size' => 'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                    'is_image' => 'File yang anda Upload bukan gambar',
+                    'mime_in' => 'File yang anda Upload bukan gambar'
+                ]
+            ]
+
+        ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
-            return redirect()->to('admin/updateSiswa/'.$id_siswa)->withInput();
+            return redirect()->to('admin/updateSiswa/' . $id_siswa)->withInput();
         }
         //ambil gambar
         $profile = $this->request->getFile('profile_user');
         //pengecekan gambar apakah ada atau tidak
-        if($profile->getError() == 4){
+        if ($profile->getError() == 4) {
             $namaProfile = 'default.png';
-        }else{
+        } else {
             // dd($profile);
             //pindah file ke img
-            $namaProfile =$profile->getName();
-            $profile->move('img',$namaProfile);
+            $namaProfile = $profile->getName();
+            $profile->move('img', $namaProfile);
             //ambil nama file
             // $profile->move('img',$namaProfile);
         }
@@ -559,11 +589,11 @@ class Admin extends BaseController
         //memasukan data ke database
         // dd($this->request->getVar('kelas'));
         $this->userModel->save([
-            'id_user' =>$id_user,
+            'id_user' => $id_user,
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
-            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'telp_user' => $this->request->getVar('telp_user'),
@@ -571,109 +601,107 @@ class Admin extends BaseController
             'level' => 2
         ]);
         // $userId = $this->userModel->insertID();
-        $daftar=[
-            'id_daftar_siswa'=>$id_daftar,
-            'id_kelas'=>$this->request->getGetPost('kelas'),
-            'id_user'=>$id_user
+        $daftar = [
+            'id_daftar_siswa' => $id_daftar,
+            'id_kelas' => $this->request->getGetPost('kelas'),
+            'id_user' => $id_user
         ];
         $this->daftarModel->save($daftar);
-        
+
         // dd($this->daftarModel);
-        session()->setFlashdata('pesan','Behasil mengubah data Siswa.');
-        
-        return redirect()->to('admin/tampilan_kelas');   
+        session()->setFlashdata('pesan', 'Behasil mengubah data Siswa.');
+
+        return redirect()->to('admin/tampilan_kelas');
     }
     public function editAdmin($id_user)
     {
         // dd($this->request->getVar());
         //cek data lama
         // dd($id_daftar);
-        $dataLama= $this->userModel->siswa($id_user);
+        $dataLama = $this->userModel->siswa($id_user);
         //  dd($dataLama);
         $id_siswa = $id_user;
         // dd($id_siswa);
         $this->updateSiswa($id_siswa);
         // dd($id_user);
         //vaalidasi data nip
-        if ($dataLama->NIP== $this->request->getVar('nip')){
+        if ($dataLama->NIP == $this->request->getVar('nip')) {
             $nip = 'required';
-        }
-        else{
+        } else {
             $nip = 'required|is_unique[user.NIP]';
         }
         // validasi data no telp
-        if ($dataLama->telp_user == $this->request->getVar('telp_user')){
+        if ($dataLama->telp_user == $this->request->getVar('telp_user')) {
             $telp = 'required';
-        }else{
+        } else {
             $telp = 'required|is_unique[user.telp_user]';
         }
         // dd($nip);
-        if(!$this->validate([
-            'nama_user'=>[
-                'rules'=> 'required',
-                'errors'=>[
-                    'required' =>'Nama harus diisi !'
+        if (!$this->validate([
+            'nama_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi !'
                 ]
             ],
-            'nip'=>[
-                'rules'=>$nip,
-                'errors'=>[
-                    'required'=>'Nomer Induk harus diisi !',
-                    'is_unique'=>'Nomer Induk telah tersedia'
+            'nip' => [
+                'rules' => $nip,
+                'errors' => [
+                    'required' => 'Nomer Induk harus diisi !',
+                    'is_unique' => 'Nomer Induk telah tersedia'
                 ]
-                ],
-            'telp_user'=>[
-                'rules'=>$telp,
-                'errors'=>[
-                    'required'=>'Nomer Telpon Belum di Isi !',
-                    'is_unique'=>'Nomer Telpon telah tersedia'
+            ],
+            'telp_user' => [
+                'rules' => $telp,
+                'errors' => [
+                    'required' => 'Nomer Telpon Belum di Isi !',
+                    'is_unique' => 'Nomer Telpon telah tersedia'
                 ]
-                ],
-                'email_user'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Email Belum Di isi !'
-                    ]
-                    ],
-                'password'=>[
-                'rules'=>'required',
-                'errors'=>[
-                    'required'=>'Silahkan masukan password !'
+            ],
+            'email_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email Belum Di isi !'
                 ]
-                ],
-                'alamat'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Silahkan masukan alamat !'
-                    ]
-                    ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
-                    'errors'=>[
-                        // 'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
-      
-        ]))
-        {
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan password !'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan alamat !'
+                ]
+            ],
+            'profile_user' => [
+                'rules' => 'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                'errors' => [
+                    // 'uploaded'=>'File belum di upload',
+                    'max_size' => 'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                    'is_image' => 'File yang anda Upload bukan gambar',
+                    'mime_in' => 'File yang anda Upload bukan gambar'
+                ]
+            ]
+
+        ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
-            return redirect()->to('admin/updateAdmin/'.$id_siswa)->withInput();
+            return redirect()->to('admin/updateAdmin/' . $id_siswa)->withInput();
         }
         //ambil gambar
         $profile = $this->request->getFile('profile_user');
         //pengecekan gambar apakah ada atau tidak
-        if($profile->getError() == 4){
+        if ($profile->getError() == 4) {
             $namaProfile = 'default.png';
-        }else{
+        } else {
             // dd($profile);
             //pindah file ke img
-            $namaProfile =$profile->getName();
-            $profile->move('img',$namaProfile);
+            $namaProfile = $profile->getName();
+            $profile->move('img', $namaProfile);
             //ambil nama file
             // $profile->move('img',$namaProfile);
         }
@@ -681,11 +709,11 @@ class Admin extends BaseController
         //memasukan data ke database
         //  dd($this->request->getVar());
         $this->userModel->save([
-            'id_user' =>$id_user,
+            'id_user' => $id_user,
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
-            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'telp_user' => $this->request->getVar('telp_user'),
@@ -693,103 +721,101 @@ class Admin extends BaseController
             'level' => 1
         ]);
         // $userId = $this->userModel->insertID();
-        
+
         // dd($this->daftarModel);
-        session()->setFlashdata('pesan','Behasil mengubah data admin.');
-        
-        return redirect()->to('/admin/admin');   
+        session()->setFlashdata('pesan', 'Behasil mengubah data admin.');
+
+        return redirect()->to('/admin/admin');
     }
     public function editguru($id_user)
     {
         // dd($this->request->getVar());
         //cek data lama
         // dd($id_daftar);
-        $dataLama= $this->userModel->siswa($id_user);
+        $dataLama = $this->userModel->siswa($id_user);
         //  dd($dataLama);
         $id_siswa = $id_user;
         // dd($id_siswa);
         $this->updateSiswa($id_siswa);
         // dd($id_user);
         //vaalidasi data nip
-        if ($dataLama->NIP== $this->request->getVar('nip')){
+        if ($dataLama->NIP == $this->request->getVar('nip')) {
             $nip = 'required';
-        }
-        else{
+        } else {
             $nip = 'required|is_unique[user.NIP]';
         }
         // validasi data no telp
-        if ($dataLama->telp_user == $this->request->getVar('telp_user')){
+        if ($dataLama->telp_user == $this->request->getVar('telp_user')) {
             $telp = 'required';
-        }else{
+        } else {
             $telp = 'required|is_unique[user.telp_user]';
         }
         // dd($nip);
-        if(!$this->validate([
-            'nama_user'=>[
-                'rules'=> 'required',
-                'errors'=>[
-                    'required' =>'Nama harus diisi !'
+        if (!$this->validate([
+            'nama_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi !'
                 ]
             ],
-            'nip'=>[
-                'rules'=>$nip,
-                'errors'=>[
-                    'required'=>'Nomer Induk harus diisi !',
-                    'is_unique'=>'Nomer Induk telah tersedia'
+            'nip' => [
+                'rules' => $nip,
+                'errors' => [
+                    'required' => 'Nomer Induk harus diisi !',
+                    'is_unique' => 'Nomer Induk telah tersedia'
                 ]
-                ],
-            'telp_user'=>[
-                'rules'=>$telp,
-                'errors'=>[
-                    'required'=>'Nomer Telpon Belum di Isi !',
-                    'is_unique'=>'Nomer Telpon telah tersedia'
+            ],
+            'telp_user' => [
+                'rules' => $telp,
+                'errors' => [
+                    'required' => 'Nomer Telpon Belum di Isi !',
+                    'is_unique' => 'Nomer Telpon telah tersedia'
                 ]
-                ],
-                'email_user'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Email Belum Di isi !'
-                    ]
-                    ],
-                'password'=>[
-                'rules'=>'required',
-                'errors'=>[
-                    'required'=>'Silahkan masukan password !'
+            ],
+            'email_user' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email Belum Di isi !'
                 ]
-                ],
-                'alamat'=>[
-                    'rules'=>'required',
-                    'errors'=>[
-                        'required'=>'Silahkan masukan alamat !'
-                    ]
-                    ],
-                'profile_user'=>[
-                    'rules'=>'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
-                    'errors'=>[
-                        // 'uploaded'=>'File belum di upload',
-                        'max_size'=>'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
-                        'is_image'=>'File yang anda Upload bukan gambar',
-                        'mime_in'=>'File yang anda Upload bukan gambar'
-                    ]
-                    ]
-      
-        ]))
-        {
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan password !'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Silahkan masukan alamat !'
+                ]
+            ],
+            'profile_user' => [
+                'rules' => 'is_image[profile_user]|mime_in[profile_user,image/jpg,image/jpeg,image/png|max_size[profile_user,2048]',
+                'errors' => [
+                    // 'uploaded'=>'File belum di upload',
+                    'max_size' => 'Ukura gambar lebih besar dari 2 MB, silahkan pilih file lain',
+                    'is_image' => 'File yang anda Upload bukan gambar',
+                    'mime_in' => 'File yang anda Upload bukan gambar'
+                ]
+            ]
+
+        ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             // return redirect()->to('admin/add_guru')->withInput()->with('validation',$validation);
-            return redirect()->to('admin/updateGuru/'.$id_siswa)->withInput();
+            return redirect()->to('admin/updateGuru/' . $id_siswa)->withInput();
         }
         //ambil gambar
         $profile = $this->request->getFile('profile_user');
         //pengecekan gambar apakah ada atau tidak
-        if($profile->getError() == 4){
+        if ($profile->getError() == 4) {
             $namaProfile = 'default.png';
-        }else{
+        } else {
             // dd($profile);
             //pindah file ke img
-            $namaProfile =$profile->getName();
-            $profile->move('img',$namaProfile);
+            $namaProfile = $profile->getName();
+            $profile->move('img', $namaProfile);
             //ambil nama file
             // $profile->move('img',$namaProfile);
         }
@@ -797,11 +823,11 @@ class Admin extends BaseController
         //memasukan data ke database
         //  dd($this->request->getVar());
         $this->userModel->save([
-            'id_user' =>$id_user,
+            'id_user' => $id_user,
             'nama_user' => $this->request->getVar('nama_user'),
             'NIP' => $this->request->getVar('nip'),
             'alamat_user' => $this->request->getVar('alamat'),
-            'jenis_kelamin'=> $this->request->getVar('jenis_kelamin'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'email_user' => $this->request->getVar('email_user'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'telp_user' => $this->request->getVar('telp_user'),
@@ -809,10 +835,10 @@ class Admin extends BaseController
             'level' => 0
         ]);
         // $userId = $this->userModel->insertID();
-        
+
         // dd($this->daftarModel);
-        session()->setFlashdata('pesan','Behasil mengubah data guru.');
-        
-        return redirect()->to('/admin/tampilan_guru');   
+        session()->setFlashdata('pesan', 'Behasil mengubah data guru.');
+
+        return redirect()->to('/admin/tampilan_guru');
     }
 }

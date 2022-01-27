@@ -1,8 +1,8 @@
 <div class="row no-gutters mt-5 ">
     <div class="col-md-2 bg-sidebar mt-2 pr-3 pt-4" id="sidebar">
         <img src="/img/profile.jpg" class="img-responsive img-profile mt-3" alt="...">
-        <button type="button" class="btn-profileadmin mt-3 text-white" href="">VIEW PROFILE</button>
-        <ul class="nav flex-column ml-3 mb-5 mt-10" >
+        <a type="button" class="btn-profileadmin mt-3 text-white" href="/admin/profile">VIEW PROFILE</a>
+        <ul class="nav flex-column ml-3 mb-5 mt-10">
             <li class="nav-item">
                 <a class="nav-link active" href="/admin/index"><i class="fas fa-home fa-lg mr-3"></i>Home</a>
             </li>
@@ -14,9 +14,9 @@
             </li>
         </ul>
     </div>
-   
 
-<!--<div class="row no-gutters mt-5">
+
+    <!--<div class="row no-gutters mt-5">
     <div class="col-md-2">
         <div class="sidebar">
                 <ul>
@@ -31,7 +31,3 @@
 </div>
 </div>
 </div>-->
-
-
-
-
