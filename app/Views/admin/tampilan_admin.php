@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
-<div class="container">
+<div class="container mt-3">
     <h1 class="text-center">Halaman tampilan admin</h1>
     <?php if(session()->getFlashdata('pesan')) : ?>
     <div class="alert alert-success" role="alert">

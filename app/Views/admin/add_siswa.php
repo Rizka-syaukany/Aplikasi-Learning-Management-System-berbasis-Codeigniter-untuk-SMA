@@ -1,6 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
+
 <?= $this->include("layout/sidenavbar"); ?>
 
 <div class="col-md-10 ml-auto">
@@ -10,6 +11,7 @@
 <div class="container">
     <div class="row ml-5">
         <div class="col-10 ml-3">
+
             <?= $validationSiswa->listErrors(); ?>
             <form action="/admin/saveSiswa" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>

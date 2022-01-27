@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 <?= $this->include("layout/navbar_admin"); ?>
-<?= $this->include("layout/sidenavbar"); ?>
+
 
 <div class="col-md-10 ml-auto">
     <div class="shadow-sm p-3 mb-5 bg-white">
@@ -11,6 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-10 ml-5">
+
             <?= $validationSiswa->listErrors(); ?>
 
             <form action="/admin/editSiswa/<?= $siswa->id_user; ?>" method="POST" enctype="multipart/form-data">

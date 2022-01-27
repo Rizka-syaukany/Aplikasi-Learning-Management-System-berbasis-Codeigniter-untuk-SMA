@@ -8,6 +8,7 @@
         <h1 class="text-center mt-5 mb-5">Halaman Tampilan Siswa</h1>
     </div>
 
+
 <div class="container">
 <div class="col-md-10 ml-5">
         <table class="table table-striped">

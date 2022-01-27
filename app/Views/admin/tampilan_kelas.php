@@ -26,11 +26,15 @@
                         </div>
                         <h5 class="card-title"><?= $k['nama_kelas']; ?></h5>
                         <a href="tampilan_siswa/<?= $k['id_kelas']; ?>" class="btn btn-warning rounded-0">Tampilkan</a>
+
                     </div>
+                    <h5 class="card-title"><?= $k['nama_kelas']; ?></h5>
+                    <a href="tampilan_siswa/<?= $k['id_kelas']; ?>" class="btn btn-warning">Tampilkan</a>
                 </div>
             </div>
-            <?php endforeach; ?>
         </div>
-
+        <?php endforeach; ?>
     </div>
-    <?= $this->endSection(); ?>
+
+</div>
+<?= $this->endSection(); ?>
